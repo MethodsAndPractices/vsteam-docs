@@ -1,5 +1,10 @@
+const moduleCommands = require("./docs/Module/sidebars.js");
+
 module.exports = {
-  someSidebar: {
-    VSTeam: ['index','Module Documentation']
+  docs: {
+    Introduction: [
+      'index'
+    ],
+    "Module Commands": moduleCommands
   },
 };
