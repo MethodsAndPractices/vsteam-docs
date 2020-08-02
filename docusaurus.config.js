@@ -2,7 +2,7 @@ module.exports = {
   title: 'VSTeam Docs',
   tagline: 'Documentation for the VSTeam PowerShell Module and its tools',
   url: 'https://methodsandpractices.github.io',
-  baseUrl: '/vsteam-docs/',
+  baseUrl: '/',
   favicon: 'img/favicon.ico',
   organizationName: 'MethodsAndPractices', // Usually your GitHub org/user name.
   projectName: 'vsteam-docs', // Usually your repo name.
