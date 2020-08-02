@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[86],{223:function(a){a.exports=JSON.parse('{"azure-dev-ops":{"allTagsPath":"/blog/tags","slug":"azure-dev-ops","name":"azure devops","count":1,"permalink":"/blog/tags/azure-dev-ops"},"vs-team":{"allTagsPath":"/blog/tags","slug":"vs-team","name":"vsteam","count":1,"permalink":"/blog/tags/vs-team"}}')}}]);

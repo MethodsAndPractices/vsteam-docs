@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[35],{172:function(a){a.exports=JSON.parse('{"allTagsPath":"/blog/tags","slug":"azure-dev-ops","name":"azure devops","count":1,"permalink":"/blog/tags/azure-dev-ops"}')}}]);
