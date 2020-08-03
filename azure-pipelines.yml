@@ -20,7 +20,7 @@ steps:
       echo "machine github.com login ${GH_LOGIN} password ${GH_TOKEN}" > ~/.netrc
       cd website
       yarn install
-      GIT_USER="${GH_NAME}" CURRENT_BRANCH=master yarn run publish-gh-pages
+      GIT_USER="${GH_LOGIN}" CURRENT_BRANCH=master yarn run publish-gh-pages
     env:
       GH_NAME: $(GH_NAME)
       GH_LOGIN: $(GH_LOGIN)
