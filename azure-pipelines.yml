@@ -23,7 +23,7 @@ steps:
       GIT_USER="${GH_NAME}" CURRENT_BRANCH=master yarn run publish-gh-pages
     env:
       GH_NAME: $(GH_NAME)
-      GH_NAME: $(GH_LOGIN)
+      GH_LOGIN: $(GH_LOGIN)
       GH_EMAIL: $(GH_EMAIL)
       GH_TOKEN: $(GH_TOKEN)
     displayName: 'yarn install and build'
