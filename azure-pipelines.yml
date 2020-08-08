@@ -25,7 +25,7 @@ steps:
     inputs:
       targetType: 'inline'
       script: |
-        .\tools\ci\Create-VSTeamHelp.ps1 -Path ".\vsteam\.docs" -Destination ".\vsteam-docs\docs\module-vsteam"
+        .\vsteam-docs\tools\ci\Create-VSTeamHelp.ps1 -Path ".\vsteam\.docs" -Destination ".\vsteam-docs\docs\module-vsteam"
 
   - script: |
       git config --global user.name "${GH_NAME}"
