@@ -25,7 +25,7 @@ steps:
     inputs:
       targetType: 'inline'
       script: |
-        .\vsteam\Build-Module.ps1 -buildHelp
+        .\vsteam\Build-Module.ps1 -installDep -buildHelp
         Copy-Item -Path .\vsteam\.docs -Destination .\vsteam-docs\docs\module-vsteam
 
   - script: |
