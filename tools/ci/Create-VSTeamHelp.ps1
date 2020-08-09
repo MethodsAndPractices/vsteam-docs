@@ -46,7 +46,7 @@ foreach ($file in $files) {
 $null = $sbDocuSaurusSidebar.Append("];")
 
 Write-Output 'Creating cmdlet index file'
-Set-Content -Path "$Destination/files.md" -Value $sbMarkdownIndex.ToString()
+Set-Content -Path "$Path/files.md" -Value $sbMarkdownIndex.ToString()
 
 Write-Output 'Merging Markdown files'
 if(-not (Get-Module Trackyon.Markdown -ListAvailable)) {
