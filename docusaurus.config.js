@@ -26,7 +26,12 @@ module.exports = {
           label: 'GitHub',
           position: 'right',
         },
-      ],
+      ]
+    },
+    prism: {
+      additionalLanguages: [
+        'powershell'
+      ]
     },
     footer: {
       style: 'dark',
