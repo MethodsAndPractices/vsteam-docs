@@ -27,6 +27,15 @@ steps:
       script: |
         .\vsteam-docs\tools\ci\Create-VSTeamHelp.ps1 -Path ".\vsteam\.docs" -Destination ".\vsteam-docs\docs\module-vsteam"
 
+
+  - task: PowerShell@2
+    displayName: 'Build VSTeam Module Help'
+    inputs:
+      targetType: 'inline'
+      script: |
+        tree /f
+    condition: always()
+
   - script: |
       git config --global user.name "${GH_NAME}"
       git config --global user.email "${GH_EMAIL}"
