@@ -45,6 +45,9 @@ foreach ($file in $files) {
 
 $null = $sbDocuSaurusSidebar.Append("];")
 
+Write-Output 'Creating cmdlet index file'
+Set-Content -Path "$Destination/files.md" -Value $sbMarkdownIndex.ToString()
+
 Write-Output 'Merging Markdown files'
 if(-not (Get-Module Trackyon.Markdown -ListAvailable)) {
    Install-Module Trackyon.Markdown -Scope CurrentUser -Force
@@ -70,6 +73,3 @@ Merge-Markdown $Path $Destination
 
 Write-Output 'Creating docusaurus sidebars file'
 Set-Content -Path "$Destination/sidebars.js" -Value $sbDocuSaurusSidebar.ToString()
-
-Write-Output 'Creating cmdlet index file'
-Set-Content -Path "$Destination/files.md" -Value $sbMarkdownIndex.ToString()
