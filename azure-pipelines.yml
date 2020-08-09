@@ -1,3 +1,11 @@
+parameters:
+  - name: BuildFrom
+    type: string
+    default: Markdown
+    values:
+      - Markdown
+      - Module
+
 trigger:
   - master
 
@@ -21,11 +29,25 @@ steps:
     displayName: 'Install Node.js'
 
   - task: PowerShell@2
-    displayName: 'Build VSTeam Module Help'
+    displayName: 'Build VSTeam Module Help - From Markdown'
     inputs:
       targetType: 'inline'
       script: |
         .\vsteam-docs\tools\ci\Create-VSTeamHelp.ps1 -Path ".\vsteam\.docs" -Destination ".\vsteam-docs\docs\module-vsteam"
+
+  - task: PowerShell@2
+    displayName: 'Build VSTeam Module Help - From Module'
+    inputs:
+      targetType: 'inline'
+      script: |
+        if (-not (Get-Module VSTeam -ListAvailable)) {
+          Install-Module VSTeam -Scope CurrentUser -Force
+        }
+
+        if (-not (Get-Module platyPS -ListAvailable)) {
+            Install-Module platyPS -Scope CurrentUser -Force
+        }
+        New-MarkdownHelp -Module VSTeam -OutputFolder .\vsteam-docs\docs\module-vsteam -Force
 
   - script: |
       git config --global user.name "${GH_NAME}"
