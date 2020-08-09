@@ -68,7 +68,13 @@ foreach ($file in $mergedFiles) {
     $null = $sbDocuSaurusSidebar.Append("'module-vsteam/$($file.BaseName)',")
 
     $fileContent = Get-Content -Path $file.FullName -Encoding utf8
-    $fileContent = $fileContent -replace "(#){3}\s*(-)*\s(EXAMPLE [1-9]*)\s(-)*", '### $3'
+
+    #replaces the '-' signed for in the ----- Example 12 ------ header
+    $fileContent = $fileContent -replace "^(#){3}\s*(-)*\s(EXAMPLE [1-9]*)\s(-)*", '### $3'
+
+    #code block language key word 'PoWerShell' (or whatever is written) must be all small case 'powershell'
+    $fileContent = $fileContent -ireplace "(`)(powershell)", 'powershell'
+
     Set-Content -Path $file.FullName -Value $fileContent
 }
 $null = $sbDocuSaurusSidebar.Append("];")
