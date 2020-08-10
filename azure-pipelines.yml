@@ -52,8 +52,8 @@ steps:
           if (-not (Get-Module platyPS -ListAvailable)) {
               Install-Module platyPS -Scope CurrentUser -Force
           }
-          .\vsteam-docs\tools\ci\Create-DocusaurusMenuFile.ps1 -MarkdownPath ".\vsteam-docs\docs\module-vsteam"
           New-MarkdownHelp -Module VSTeam -OutputFolder .\vsteam-docs\docs\module-vsteam -Force
+          .\vsteam-docs\tools\ci\Create-DocusaurusMenuFile.ps1 -MarkdownPath ".\vsteam-docs\docs\module-vsteam"
   - script: |
       cd vsteam-docs/website
       yarn install
