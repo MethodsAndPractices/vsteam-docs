@@ -8,6 +8,7 @@ param (
 Write-Output 'Retrieving docusaurus markdown files'
 $markdownFiles = Get-ChildItem -Path $MarkdownPath -Filter '*-*.md'
 
+Write-Output "Found $($markdownFiles.Count) markdown files"
 # for the sidebar menu in the docs
 $sb = New-Object System.Text.StringBuilder
 
@@ -17,5 +18,5 @@ foreach ($file in $markdownFiles) {
 }
 $null = $sb.Append("];")
 
-Write-Output 'Creating docusaurus sidebars file'
+Write-Output "Creating docusaurus sidebars file: $MarkdownPath/sidebars.js"
 Set-Content -Path "$MarkdownPath/sidebars.js" -Value $sb.ToString()
