@@ -5,6 +5,9 @@ parameters:
     values:
       - Markdown
       - Module
+  - name: Deploy
+    type: boolean
+    default: true
 
 trigger:
   - master
@@ -51,18 +54,23 @@ steps:
           }
           .\vsteam-docs\tools\ci\Create-DocusaurusMenuFile.ps1 -MarkdownPath ".\vsteam-docs\docs\module-vsteam"
           New-MarkdownHelp -Module VSTeam -OutputFolder .\vsteam-docs\docs\module-vsteam -Force
-
   - script: |
-      git config --global user.name "${GH_NAME}"
-      git config --global user.email "${GH_EMAIL}"
-      git checkout -b master
-      echo "machine github.com login ${GH_LOGIN} password ${GH_TOKEN}" > ~/.netrc
       cd vsteam-docs/website
       yarn install
-      GIT_USER="${GH_LOGIN}" CURRENT_BRANCH=master yarn run deploy
-    env:
-      GH_NAME: $(GH_NAME)
-      GH_LOGIN: $(GH_LOGIN)
-      GH_EMAIL: $(GH_EMAIL)
-      GH_TOKEN: $(GH_TOKEN)
-    displayName: 'yarn install and build'
+      yarn run build
+    displayName: 'docs build'
+
+  - ${{ if eq(parameters.Deploy, true)}}:
+    - script: |
+        git config --global user.name "${GH_NAME}"
+        git config --global user.email "${GH_EMAIL}"
+        echo "machine github.com login ${GH_LOGIN} password ${GH_TOKEN}" > ~/.netrc
+        cd vsteam-docs/website
+        yarn install
+        GIT_USER="${GH_LOGIN}" CURRENT_BRANCH=$(Build.SourceBranch) yarn run deploy
+      env:
+        GH_NAME: $(GH_NAME)
+        GH_LOGIN: $(GH_LOGIN)
+        GH_EMAIL: $(GH_EMAIL)
+        GH_TOKEN: $(GH_TOKEN)
+      displayName: 'docs deploy'
