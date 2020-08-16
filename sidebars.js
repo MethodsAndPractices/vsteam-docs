@@ -1,4 +1,4 @@
-const vsTeamModuleCommands = require("./docs/module-vsteam/sidebars.js");
+const vsTeamModuleCommands = require("./docs/modules/vsteam/sidebars.js");
 
 module.exports = {
   docs: {

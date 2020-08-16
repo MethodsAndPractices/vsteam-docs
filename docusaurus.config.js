@@ -13,19 +13,28 @@ module.exports = {
         alt: 'VSTeam Site Logo',
         src: 'img/logo.svg',
       },
-      links: [
-        {
+      links: [{
           to: 'docs/',
           activeBasePath: 'docs',
           label: 'Docs',
           position: 'left',
         },
-        {to: 'blog', label: 'Blog', position: 'left'},
+     /*   {
+          to: 'blog',
+          label: 'Blog',
+          position: 'left'
+        },*/
         {
           href: 'https://github.com/MethodsAndPractices/vsteam-docs',
           label: 'GitHub',
           position: 'right',
         },
+        {
+          to: 'docs/modules/vsteam/get-vsteam',
+          activeBasePath: 'docs/modules/vsteam',
+          label: 'VSTeam Module',
+          position: 'left'
+        }
       ]
     },
     prism: {
@@ -35,29 +44,23 @@ module.exports = {
     },
     footer: {
       style: 'dark',
-      links: [
-        {
+      links: [{
           title: 'Docs',
-          items: [
-            {
-              label: 'Style Guide',
-              to: 'docs/Module',
-            }
-          ],
+          items: [{
+            label: 'Style Guide',
+            to: 'docs/Module',
+          }],
         },
         {
           title: 'Community',
-          items: [
-            {
-              label: 'Stack Overflow',
-              href: 'https://stackoverflow.com/questions/tagged/VSTeam',
-            },
-          ],
+          items: [{
+            label: 'Stack Overflow',
+            href: 'https://stackoverflow.com/questions/tagged/VSTeam',
+          }, ],
         },
         {
           title: 'More',
-          items: [
-            {
+          items: [{
               label: 'Blog',
               to: 'blog',
             },
@@ -80,14 +83,12 @@ module.exports = {
           homePageId: 'index',
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
-          editUrl:
-            'https://github.com/MethodsAndPractices/vsteam-docs/edit/master/website/',
+          editUrl: 'https://github.com/MethodsAndPractices/vsteam-docs/edit/master/website/',
         },
         blog: {
           showReadingTime: true,
           // Please change this to your repo.
-          editUrl:
-            'https://github.com/MethodsAndPractices/vsteam-docs/edit/master/website/blog/',
+          editUrl: 'https://github.com/MethodsAndPractices/vsteam-docs/edit/master/website/blog/',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
@@ -95,4 +96,7 @@ module.exports = {
       },
     ],
   ],
+  plugins: [ require.resolve('docusaurus-lunr-search'), {
+    languages: ['en']
+  }]
 };
