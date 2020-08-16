@@ -2,7 +2,10 @@
 param (
     [Parameter(Mandatory=$true)]
     [string]
-    $MarkdownPath
+    $MarkdownPath,
+    [Parameter(Mandatory=$false)]
+    [string]
+    $NavigationPath = "modules/vsteam"
 )
 
 Write-Output 'Retrieving docusaurus markdown files'
@@ -14,7 +17,7 @@ $sb = New-Object System.Text.StringBuilder
 
 $null = $sb.Append("module.exports = [")
 foreach ($file in $markdownFiles) {
-    $null = $sb.Append("'module-vsteam/$($file.BaseName)',")
+    $null = $sb.Append("'$NavigationPath/$($file.BaseName)',")
 }
 $null = $sb.Append("];")
 
