@@ -13,7 +13,5 @@ if (-not (Get-Module platyPS -ListAvailable)) {
     Install-Module platyPS -Scope CurrentUser -Force
 }
 
-Get-ChildItem $OutputFolder | Remove-Item
-
 New-MarkdownHelp -Module VSTeam -OutputFolder $OutputFolder -Force
 . $PSScriptRoot\Create-DocusaurusMenuFile.ps1 -MarkdownPath $OutputFolder

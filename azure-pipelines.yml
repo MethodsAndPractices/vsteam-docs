@@ -1,7 +1,7 @@
 parameters:
   - name: BuildFrom
     type: string
-    default: Markdown
+    default: Module
     values:
       - Markdown
       - Module
