@@ -30,7 +30,7 @@ module.exports = {
           position: 'right',
         },
         {
-          to: 'docs/modules/vsteam/get-vsteam',
+          to: 'docs/modules/vsteam/index',
           activeBasePath: 'docs/modules/vsteam',
           label: 'VSTeam Module',
           position: 'left'
