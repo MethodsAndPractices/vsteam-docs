@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "start": "docusaurus start",
-    "build:VSTeamHelp": "powershell -File .\\tools\\ci\\Build-VSTeamModuleHelp.ps1",
-    "build:VSTeamPlusHelp": "powershell -File .\\tools\\ci\\Build-VSTeamPlusModuleHelp.ps1",
+    "build:VSTeamHelp": "powershell -File .\\tools\\ci\\Build-ModuleHelp.ps1 -Module VSTeam",
+    "build:VSTeamPlusHelp": "powershell -File .\\tools\\ci\\Build-ModuleHelp.ps1",
     "build": "docusaurus build",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy"
