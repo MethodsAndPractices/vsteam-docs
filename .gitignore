@@ -20,3 +20,4 @@ yarn-debug.log*
 yarn-error.log*
 
 docs/modules/**/*-*md
+docs/modules/**/index.md
