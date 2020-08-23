@@ -19,7 +19,7 @@ foreach ($file in $files) {
 
     $fileContent = (Get-Content -Path $file.FullName -Encoding utf8 | Out-String)
 
-    $null = $sbMarkdownIndex.Append("### [$($file.BaseName)](vsteam/$($file.Name))`r`n`r`n")
+    $null = $sbMarkdownIndex.Append("### [$($file.BaseName)]($($file.Name))`r`n`r`n")
 
     #regex is search all text between the header '## SYNOPSIS' and '## SYNTAX' to get the cmdlet summary including new lines
     [regex] $regex = '(?s)(\#\# *SYNOPSIS)(.*?)(\#\# *SYNTAX)'
@@ -31,7 +31,7 @@ foreach ($file in $files) {
 
 }
 
-$indexFile = (Get-Content -Path "./docs/modules/index-$Module.md" -Encoding utf8 | Out-String)
+$indexFile = (Get-Content -Path "./docs/modules/index$Module.md" -Encoding utf8 | Out-String)
 
 $sbMarkdownIndex.Insert(0,"$indexFile`r`n")
 
