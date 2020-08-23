@@ -65,3 +65,7 @@ steps:
         GH_EMAIL: $(GH_EMAIL)
         GH_TOKEN: $(GH_TOKEN)
       displayName: 'docs deploy'
+
+  - pwsh: |
+      Tree /f
+    condition: always()
