@@ -3,10 +3,10 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "docusaurus start",
+    "start": "yarn run build:VSTeamHelp && docusaurus start",
     "build:VSTeamHelp": "powershell -File .\\tools\\ci\\Build-ModuleHelp.ps1 -Module VSTeam",
     "build:VSTeamPlusHelp": "powershell -File .\\tools\\ci\\Build-ModuleHelp.ps1",
-    "build": "docusaurus build",
+    "build": "yarn run build:VSTeamHelp && docusaurus build",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy"
   },
