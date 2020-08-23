@@ -1,1 +1,0 @@
-# VSTeam Documentation and tools
