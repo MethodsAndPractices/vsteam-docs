@@ -8,32 +8,29 @@ import styles from './styles.module.css';
 
 const features = [
   {
-    title: <>Easy to Use</>,
+    title: <>Easier than the API</>,
     imageUrl: 'img/undraw_docusaurus_mountain.svg',
     description: (
       <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
+        The VSTeam Module makes it easier to use the Azure DevOps API which is not always easy to understand.
       </>
     ),
   },
   {
-    title: <>Focus on What Matters</>,
+    title: <>Cross-Version and Platform Tested</>,
     imageUrl: 'img/undraw_docusaurus_tree.svg',
     description: (
       <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the <code>docs</code> directory.
+        VSTeam is tested on all major operating systems (windows, ubuntu, maxOs) and tested from TFS 201 7to Azure DevOps Server 2020.
       </>
     ),
   },
   {
-    title: <>Powered by React</>,
+    title: <>Examples at your Disposal</>,
     imageUrl: 'img/undraw_docusaurus_react.svg',
     description: (
       <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
+        Use the example scripts in order to get you easily started or reuse them for your own tasks.
       </>
     ),
   },
@@ -59,8 +56,8 @@ function Home() {
   const {siteConfig = {}} = context;
   return (
     <Layout
-      title={`Hello from ${siteConfig.title}`}
-      description="Description will go into a meta tag in <head />">
+      title={`The Automation Module for Azure DevOps`}
+      description={`siteConfig.tagline`}>
       <header className={clsx('hero hero--primary', styles.heroBanner)}>
         <div className="container">
           <h1 className="hero__title">{siteConfig.title}</h1>
