@@ -1,11 +1,14 @@
 [CmdletBinding()]
 param (
+    [Parameter(Mandatory = $true)]
+    [string]
+    $Module,
     [Parameter(Mandatory = $false)]
     [string]
-    $Module
+    $BasePath = './modules/'
 )
 
-$docsPath = "./docs/modules/$Module"
+$docsPath = "$BasePath$Module"
 
 Write-Output "Creating file index for module $Module"
 
@@ -31,7 +34,7 @@ foreach ($file in $files) {
 
 }
 
-$indexFile = (Get-Content -Path "./docs/modules/index$Module.md" -Encoding utf8 | Out-String)
+$indexFile = (Get-Content -Path "$BasePath/index$Module.md" -Encoding utf8 | Out-String)
 
 $sbMarkdownIndex.Insert(0,"$indexFile`r`n")
 
