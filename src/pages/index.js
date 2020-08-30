@@ -9,7 +9,7 @@ import styles from './styles.module.css';
 const features = [
   {
     title: <>Easier than the API</>,
-    imageUrl: 'img/undraw_docusaurus_mountain.svg',
+    imageUrl: 'img/startpage_vsteam_api.svg',
     description: (
       <>
         The VSTeam Module makes it easier to use the Azure DevOps API which is not always easy to understand.
@@ -18,7 +18,7 @@ const features = [
   },
   {
     title: <>Cross-Version and Platform Tested</>,
-    imageUrl: 'img/undraw_docusaurus_tree.svg',
+    imageUrl: 'img/startpage_cross_tool_platform_tests.svg',
     description: (
       <>
         VSTeam is tested on all major operating systems (windows, ubuntu, maxOs) and tested from TFS 201 7to Azure DevOps Server 2020.
