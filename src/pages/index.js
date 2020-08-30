@@ -26,11 +26,11 @@ const features = [
     ),
   },
   {
-    title: <>Examples at your Disposal</>,
-    imageUrl: 'img/undraw_docusaurus_react.svg',
+    title: <>Kickstarter Samples</>,
+    imageUrl: 'img/startpage_kickstarter_samples.svg',
     description: (
       <>
-        Use the example scripts in order to get you easily started or reuse them for your own tasks.
+        Use our quickstart scripts to get you easily started or contribute your own from your projects.
       </>
     ),
   },
