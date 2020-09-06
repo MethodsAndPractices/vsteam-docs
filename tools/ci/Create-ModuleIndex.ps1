@@ -8,7 +8,7 @@ param (
     $BasePath = './modules/'
 )
 
-$docsPath = "$BasePath$Module"
+$docsPath = ("$BasePath$Module").ToLower()
 
 Write-Output "Creating file index for module $Module"
 
@@ -34,7 +34,7 @@ foreach ($file in $files) {
 
 }
 
-$indexFile = (Get-Content -Path "$BasePath/index$Module.md" -Encoding utf8 | Out-String)
+$indexFile = (Get-Content -Path "$BasePath/index-$($Module.ToLower()).md" -Encoding utf8 | Out-String)
 
 $sbMarkdownIndex.Insert(0,"$indexFile`r`n")
 

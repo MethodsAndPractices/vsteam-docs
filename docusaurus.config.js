@@ -106,7 +106,7 @@ module.exports = {
         path: 'modules/vsteam',
         editUrl: 'https://github.com/MethodsAndPractices/vsteam/.docs',
         routeBasePath: 'modules/vsteam',
-        sidebarPath: require.resolve('./modules/sidebarsVsTeam.js'),
+        sidebarPath: require.resolve('./modules/sidebars-vsteam.js'),
         showLastUpdateAuthor: true,
         showLastUpdateTime: true,
       }

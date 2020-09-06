@@ -19,5 +19,5 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-modules/**/*-*md
+modules/vsteam/**/*-*.md
 modules/**/index.md

@@ -13,7 +13,7 @@ if (-not (Get-Module platyPS -ListAvailable)) {
     Install-Module platyPS -Scope CurrentUser -Force
 }
 
-$OutputFolder = "./modules/$Module"
+$OutputFolder = "./modules/$($Module.ToLower())"
 
 New-MarkdownHelp -Module $Module -OutputFolder $OutputFolder -Force
 . $PSScriptRoot\Create-DocusaurusMenuFile.ps1 -MarkdownPath $OutputFolder

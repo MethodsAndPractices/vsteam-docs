@@ -26,7 +26,6 @@ steps:
         git config --global user.email "${GH_EMAIL}"
         echo "machine github.com login ${GH_LOGIN} password ${GH_TOKEN}" > ~/.netrc
         git checkout master
-        cd vsteam-docs
         yarn install
         GIT_USER="${GH_LOGIN}" CURRENT_BRANCH=master yarn run deploy
       env:
