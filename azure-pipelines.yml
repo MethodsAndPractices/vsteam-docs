@@ -1,10 +1,4 @@
 parameters:
-  - name: BuildFrom
-    type: string
-    default: Module
-    values:
-      - Markdown
-      - Module
   - name: Deploy
     type: boolean
     default: true
@@ -31,19 +25,6 @@ steps:
       versionSpec: '10.x'
     displayName: 'Install Node.js'
 
-  - ${{ if eq(parameters.BuildFrom, 'Markdown') }}:
-    - task: PowerShell@2
-      displayName: 'Build VSTeam Module Help - From Markdown'
-      inputs:
-        targetType: 'inline'
-        script: |
-          .\vsteam-docs\tools\ci\Create-VSTeamHelp.ps1 -Path ".\vsteam\.docs" -Destination ".\vsteam-docs\docs\module-vsteam"
-
-  - ${{ if eq(parameters.BuildFrom, 'Module') }}:
-    - task: PowerShell@2
-      displayName: 'Build VSTeam Module Help - From Module'
-      inputs:
-        filePath: '$(System.DefaultWorkingDirectory)/vsteam-docs/tools/ci/Build-VSTeamModuleHelp.ps1'
   - script: |
       cd vsteam-docs/website
       yarn install
