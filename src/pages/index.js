@@ -21,7 +21,7 @@ const features = [
     imageUrl: 'img/startpage_cross_tool_platform_tests.svg',
     description: (
       <>
-        VSTeam is tested on all major operating systems (windows, ubuntu, maxOs) and tested from TFS 201 7to Azure DevOps Server 2020.
+        VSTeam is tested on all major operating systems (windows, ubuntu, maxOs) and tested from TFS 2017 to Azure DevOps Server 2020.
       </>
     ),
   },
