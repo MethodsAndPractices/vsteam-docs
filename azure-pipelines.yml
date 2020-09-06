@@ -9,24 +9,13 @@ trigger:
 pool:
   vmImage: 'ubuntu-latest'
 
-resources:
-  repositories:
-    - repository: github_vsteam
-      type: github
-      name: "MethodsAndPractices/vsteam"
-      endpoint: VS-TeamPipelines
-
 steps:
-  - checkout: self
-    persistCredentials: true
-  - checkout: github_vsteam
   - task: NodeTool@0
     inputs:
       versionSpec: '10.x'
     displayName: 'Install Node.js'
 
   - script: |
-      cd vsteam-docs/website
       yarn install
       yarn run build
     displayName: 'docs build'
