@@ -50,7 +50,7 @@ module.exports = {
           title: 'Docs',
           items: [{
             label: 'VSTeam Module',
-            to: 'docs/modules/vsteam/index',
+            to: 'modules/vsteam/index',
           }],
         },
         {
@@ -76,10 +76,10 @@ module.exports = {
       '@docusaurus/preset-classic',
       {
         docs: {
-          // It is recommended to set document id as docs home page (`docs/` path).
-          homePageId: 'index',
+          showReadingTime: true,
+          homePageId: 'getting-started',
           sidebarPath: require.resolve('./sidebars.js'),
-          editUrl: 'https://github.com/MethodsAndPractices/vsteam-docs/edit/master/website/',
+          editUrl: 'https://github.com/MethodsAndPractices/vsteam-docs/edit/master/',
         },
         blog: {
           showReadingTime: true,
@@ -109,7 +109,7 @@ module.exports = {
         sidebarPath: require.resolve('./modules/sidebarsVsTeam.js'),
         showLastUpdateAuthor: true,
         showLastUpdateTime: true,
-      },
+      }
     ],
   ]
 };

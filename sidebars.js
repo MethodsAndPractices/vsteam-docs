@@ -1,7 +1,14 @@
 module.exports = {
   docs: {
     Introduction: [
-      'index'
+      'getting-started',
+      'code-of-conduct'
+    ],
+    Contributing: [
+      'contributing/introduction',
+      'contributing/explore-api',
+      'contributing/build-with-docker'
+
     ]
   }
 };
