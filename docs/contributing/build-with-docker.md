@@ -3,6 +3,9 @@ id: build-with-docker
 title: Build with Docker
 ---
 
+import Supported from './../common/support-vsteam.md'
+
+< Supported />
 
 ## Run Unit Tests Locally with Docker
 
@@ -18,7 +21,10 @@ In best case you should only need to run the PowerShell script below. The docker
 
 ## Prerequisites
 
-> **Note:** This feature is still in testing and was developed on a windows machine. Therefore,  the script to run all tests for you works for that OS. But it is intended to work also for linux. But this comes a bit later.
+:::info
+This feature is still in testing and was developed on a windows machine. Therefore,  the script to run all tests for you works for that OS. But it is intended to work also for linux. But this comes a bit later.
+:::
+
 
 * [Docker](https://docs.docker.com/engine/install/)
   * depending on your OS you need to install Docker Desktop or only Server
