@@ -11,6 +11,7 @@ pool:
 
 stages:
   - stage: build
+    condition: and(succeeded(), eq(variables['System.PullRequest.IsFork'], true))
     displayName: Build
     jobs:
     - job: test_build
