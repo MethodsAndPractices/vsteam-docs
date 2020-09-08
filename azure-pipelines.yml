@@ -19,7 +19,7 @@ stages:
         - template: ./tools/ci/azurepipelines/buildDocs.yml
   - stage: deploy
     displayName: Deploy GitHub Pages
-    condition:  and(succeeded(), eq(variables['System.PullRequest.IsFork'], false))
+    condition: and(succeeded(), and(eq(variables['System.PullRequest.IsFork'], false), eq(variables['Build.SourceBranch'],'refs/heads/master')))
     jobs:
     - deployment: Deploy
       displayName: Deploy Docs
