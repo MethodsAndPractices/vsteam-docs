@@ -3,12 +3,13 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
+    "start:generate": "yarn run build:VSTeamHelp && yarn start",
     "start": "docusaurus start",
-    "build:VSTeamHelp": "powershell -File .\\tools\\ci\\Build-VSTeamModuleHelp.ps1",
-    "build:VSTeamPlusHelp": "powershell -File .\\tools\\ci\\Build-VSTeamPlusModuleHelp.ps1",
-    "build": "docusaurus build",
+    "build:VSTeamHelp": "pwsh -File ./tools/ci/Build-ModuleHelp.ps1 -Module VSTeam",
+    "build": "yarn run build:VSTeamHelp && docusaurus build",
     "swizzle": "docusaurus swizzle",
-    "deploy": "docusaurus deploy"
+    "deploy": "docusaurus deploy",
+    "clean" : "git clean -Xfd"
   },
   "dependencies": {
     "@docusaurus/core": "^2.0.0-alpha.58",

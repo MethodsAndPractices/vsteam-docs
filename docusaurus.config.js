@@ -1,6 +1,6 @@
 module.exports = {
-  title: 'VSTeam Docs',
-  tagline: 'Documentation for the VSTeam PowerShell Module and its tools',
+  title: 'VSTeam',
+  tagline: 'A PowerShell Module to make it easier to automate Azure DevOps',
   url: 'https://methodsandpractices.github.io',
   baseUrl: '/vsteam-docs/',
   favicon: 'img/favicon.ico',
@@ -19,19 +19,21 @@ module.exports = {
           label: 'Docs',
           position: 'left',
         },
-     /*   {
+        /*
+        {
           to: 'blog',
           label: 'Blog',
           position: 'left'
-        },*/
+        },
+        */
         {
           href: 'https://github.com/MethodsAndPractices/vsteam-docs',
           label: 'GitHub',
           position: 'right',
         },
         {
-          to: 'docs/modules/vsteam/get-vsteam',
-          activeBasePath: 'docs/modules/vsteam',
+          to: 'modules/vsteam/index',
+          activeBasePath: 'modules/vsteam',
           label: 'VSTeam Module',
           position: 'left'
         }
@@ -47,8 +49,8 @@ module.exports = {
       links: [{
           title: 'Docs',
           items: [{
-            label: 'Style Guide',
-            to: 'docs/Module',
+            label: 'VSTeam Module',
+            to: 'modules/vsteam/index',
           }],
         },
         {
@@ -61,17 +63,12 @@ module.exports = {
         {
           title: 'More',
           items: [{
-              label: 'Blog',
-              to: 'blog',
-            },
-            {
-              label: 'GitHub',
-              href: 'https://github.com/MethodsAndPractices/vsteam-docs',
-            },
-          ],
+            label: 'GitHub',
+            href: 'https://github.com/MethodsAndPractices/vsteam-docs',
+          }],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} VSTeam, Built with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} VSTeam, Donovan Brown.`,
     },
   },
   presets: [
@@ -79,16 +76,18 @@ module.exports = {
       '@docusaurus/preset-classic',
       {
         docs: {
-          // It is recommended to set document id as docs home page (`docs/` path).
-          homePageId: 'index',
+          showReadingTime: true,
+          homePageId: 'getting-started',
           sidebarPath: require.resolve('./sidebars.js'),
-          // Please change this to your repo.
-          editUrl: 'https://github.com/MethodsAndPractices/vsteam-docs/edit/master/website/',
+          editUrl: 'https://github.com/MethodsAndPractices/vsteam-docs/edit/master/',
         },
         blog: {
           showReadingTime: true,
-          // Please change this to your repo.
           editUrl: 'https://github.com/MethodsAndPractices/vsteam-docs/edit/master/website/blog/',
+        },
+        modules: {
+          showReadingTime: true,
+          editURl: 'https://github.com/MethodsAndPractices/vsteam-docs/edit/master/website/blog/'
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
@@ -96,7 +95,21 @@ module.exports = {
       },
     ],
   ],
-  plugins: [ require.resolve('docusaurus-lunr-search'), {
-    languages: ['en']
-  }]
+  plugins: [
+    require.resolve('docusaurus-lunr-search'), {
+      languages: ['en']
+    },
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'vsteam-module',
+        path: 'modules/vsteam',
+        editUrl: 'https://github.com/MethodsAndPractices/vsteam/.docs',
+        routeBasePath: 'modules/vsteam',
+        sidebarPath: require.resolve('./modules/sidebars-vsteam.js'),
+        showLastUpdateAuthor: true,
+        showLastUpdateTime: true,
+      }
+    ],
+  ]
 };

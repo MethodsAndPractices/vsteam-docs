@@ -1,10 +1,14 @@
-const vsTeamModuleCommands = require("./docs/modules/vsteam/sidebars.js");
-
 module.exports = {
   docs: {
     Introduction: [
-      'index'
+      'getting-started',
+      'code-of-conduct'
     ],
-    "VSTeam Module": vsTeamModuleCommands
-  },
+    Contributing: [
+      'contributing/introduction',
+      'contributing/explore-api',
+      'contributing/build-with-docker'
+
+    ]
+  }
 };

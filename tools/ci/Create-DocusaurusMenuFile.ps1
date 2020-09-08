@@ -5,7 +5,7 @@ param (
     $MarkdownPath,
     [Parameter(Mandatory=$false)]
     [string]
-    $NavigationPath = "modules/vsteam"
+    $NavigationPath
 )
 
 Write-Output 'Retrieving docusaurus markdown files'
@@ -15,9 +15,12 @@ Write-Output "Found $($markdownFiles.Count) markdown files"
 # for the sidebar menu in the docs
 $sb = New-Object System.Text.StringBuilder
 
+if($NavigationPath){
+    $NavigationPath = "$NavigationPath/"
+}
 $null = $sb.Append("module.exports = [")
 foreach ($file in $markdownFiles) {
-    $null = $sb.Append("'$NavigationPath/$($file.BaseName)',")
+    $null = $sb.Append("'$NavigationPath$($file.BaseName)',")
 }
 $null = $sb.Append("];")
 

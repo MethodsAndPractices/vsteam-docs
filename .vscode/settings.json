@@ -1,0 +1,6 @@
+{
+    "svg.preview.background": "black",
+    "files.associations": {
+        "*.yml": "azure-pipelines"
+    }
+}
