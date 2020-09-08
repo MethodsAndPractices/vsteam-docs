@@ -20,4 +20,5 @@ yarn-debug.log*
 yarn-error.log*
 
 modules/vsteam/**/*-*.md
+modules/vsteam/**/sidebars.js
 modules/**/index.md
