@@ -33,13 +33,11 @@ stages:
             - script: |
                 git config --global user.name "${GH_NAME}"
                 git config --global user.email "${GH_EMAIL}"
-                echo "machine github.com login ${GH_LOGIN} password ${GH_TOKEN}" > ~/.netrc
-                git checkout master
-                yarn install
-                GIT_USER="${GH_LOGIN}" CURRENT_BRANCH=master yarn run deploy
+                git checkout -b master
+                echo "machine github.com login ${GH_NAME} password ${GH_TOKEN}" > ~/.netrc
+                yarn && GIT_USER="${GH_NAME}" yarn deploy
               env:
                 GH_NAME: $(GH_NAME)
-                GH_LOGIN: $(GH_LOGIN)
                 GH_EMAIL: $(GH_EMAIL)
                 GH_TOKEN: $(GH_TOKEN)
               displayName: 'docs deploy'
