@@ -1,0 +1,15 @@
+parameters:
+  - name: nodeVersion
+    type: string
+    default: '12.x'
+
+steps:
+- task: NodeTool@0
+  inputs:
+    versionSpec: ${{parameters.nodeVersion}}
+  displayName: 'Install Node.js Version 12.X'
+
+- script: |
+    yarn install
+    yarn run build
+  displayName: 'docs build'
