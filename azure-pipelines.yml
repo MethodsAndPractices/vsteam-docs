@@ -28,6 +28,7 @@ stages:
         runOnce:
           deploy:
             steps:
+            - checkout: self
             - template: ./tools/ci/azurepipelines/buildDocs.yml
             - script: |
                 git config --global user.name "${GH_NAME}"
