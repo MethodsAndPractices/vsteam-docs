@@ -29,12 +29,14 @@ stages:
           deploy:
             steps:
             - checkout: self
+              persistCredentials: true
+
             - template: ./tools/ci/azurepipelines/buildDocs.yml
+            
             - script: |
                 git config --global user.name "$(GH_NAME)"
                 git config --global user.email "$(GH_EMAIL)"
-                git config --global url."git@github.com:".insteadOf "https://github.com/"
                 git checkout -b master
                 echo "machine github.com login $(GH_LOGIN) password $(GH_TOKEN)" > ~/.netrc
-                yarn && GIT_USER="$(GH_NAME)" yarn deploy
+                GIT_USER="$(GH_NAME)" yarn deploy
               displayName: 'docs deploy'
