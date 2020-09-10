@@ -1,42 +1,74 @@
 parameters:
-  - name: Deploy
-    type: boolean
-    default: true
+  - name: agent
+    type: string
+    default: macOS-latest
+    values:
+      - macOS-latest
+      - ubuntu-lastest
+      - windows-latest
+
+variables:
+  - name: defaultName
+    value: 'master'
 
 trigger:
   - master
 
-pool:
-  vmImage: 'ubuntu-latest'
+pr:
+  autoCancel: true
+  branches:
+    include:
+      - master
+
+#update documentation from powershell modules
+schedules:
+- cron: "0 0 * * *"
+  displayName: Daily midnight build
+  branches:
+    include:
+    - master
 
 stages:
-  - stage: build
-    displayName: Build
-    jobs:
-    - job: test_build
-      displayName: Check Build
-      steps:
-        - template: ./tools/ci/azurepipelines/buildDocs.yml
-  - stage: deploy
-    displayName: Deploy GitHub Pages
-    condition: and(succeeded(), and(eq(variables['System.PullRequest.IsFork'], false), eq(variables['Build.SourceBranch'],'refs/heads/master')))
-    jobs:
-    - deployment: Deploy
-      displayName: Deploy Docs
-      environment: GitHub Pages VSTeam Docs
-      strategy:
-        runOnce:
-          deploy:
-            steps:
-            - checkout: self
-              persistCredentials: true
+  - ${{ if ne(variables['Build.SourceBranchName'], variables.defaultName) }}:
+    - stage: build
+      displayName: Build
+      pool:
+        vmImage: ${{parameters.agent}}
+      jobs:
+      - job: test_build
+        displayName: Check Build
+        steps:
+          - template: ./tools/ci/azurepipelines/buildDocs.yml
+            parameters:
+              docusaurusBuild: true
+  - ${{ if eq(variables['Build.SourceBranchName'], 'master') }}:
+    - stage: buildAndDeployment
+      displayName: Build and Deploy
+      pool:
+        vmImage: ${{parameters.agent}}
+      jobs:
+      - deployment: buildAndDeployment
+        displayName: Build and Deploy to GitHub Pages
+        environment: GitHub Pages VSTeam Docs
+        strategy:
+          runOnce:
+            deploy:
+              steps:
+              - checkout: self
+                persistCredentials: true
 
-            - template: ./tools/ci/azurepipelines/buildDocs.yml
-            
-            - script: |
-                git config --global user.name "$(GH_NAME)"
-                git config --global user.email "$(GH_EMAIL)"
-                git checkout -b master
-                echo "machine github.com login $(GH_LOGIN) password $(GH_TOKEN)" > ~/.netrc
-                GIT_USER="$(GH_LOGIN)" yarn deploy
-              displayName: 'docs deploy'
+              - template: ./tools/ci/azurepipelines/buildDocs.yml
+                parameters:
+                  docusaurusBuild: false
+
+              - script: |
+                  git config --global user.name "${GH_NAME}"
+                  git config --global user.email "${GH_EMAIL}"
+                  git checkout -b master
+                  echo "machine github.com login ${GH_LOGIN} password ${GH_TOKEN}" > ~/.netrc
+                  GIT_USER="${GH_LOGIN}" yarn deploy
+                env:
+                  GH_NAME: $(GH_NAME)
+                  GH_EMAIL: $(GH_EMAIL)
+                  GH_TOKEN: $(GH_TOKEN)
+                  GH_LOGIN: $(GH_LOGIN)

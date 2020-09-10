@@ -6,7 +6,8 @@
     "start:generate": "yarn run build:VSTeamHelp && yarn start",
     "start": "docusaurus start",
     "build:VSTeamHelp": "pwsh -File ./tools/ci/Build-ModuleHelp.ps1 -Module VSTeam",
-    "build": "yarn run build:VSTeamHelp && docusaurus build",
+    "build:docusauraus": "docusaurus build",
+    "build": "yarn run build:VSTeamHelp && yarn run build:docusauraus",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
     "clean" : "git clean -Xfd"
