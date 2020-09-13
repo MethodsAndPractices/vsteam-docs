@@ -6,28 +6,27 @@ sidebar_label: Getting Started
 
 ## Introduction
 
-VSTeam is a PowerShell module with commands for accessing your [Azure DevOps Server (previously named Visual Studio Team Foundation Server) 2017/2018](https://cda.ms/Bf) and [Azure DevOps (previously named Visual Studio Team Services)](https://cda.ms/Bf).
+This site is the central page for all repositories and modules that come with VSTeam. VSTeam is a bundle of PowerShell modules to access and get you started with [Azure DevOps Server (previously named Visual Studio Team Foundation Server) 2017/2018](https://cda.ms/Bf) and [Azure DevOps Services (previously named Visual Studio Team Services)](https://cda.ms/Bf).
 
-The VSTeam module is also a provider allowing users to navigate their [Azure DevOps Server](https://cda.ms/Bf) and [Azure DevOps](https://cda.ms/Bf) as a file system.
+### Module VSTeam
 
-To get started you can visit this blog [PowerShell I would like you to meet TFS and VSTS](http://www.donovanbrown.com/post/PowerShell-I-would-like-you-to-meet-TFS-and-VSTS)
+This module is basically inly a wrapper for the API and tries to keep things simple. More complex functions with multiple steps are not allowed with this. 
 
-Documentation of the cmdlets can be found in the [docs README](https://github.com/DarqueWarrior/vsteam/blob/master/docs/readme.md) or using `Get-Help VSTeam` once the module is installed.
+Check [the repository](https://github.com/MethodsAndPractices/vsteam) for the code (and contribute) or [the docs](https://methodsandpractices.github.io/vsteam-docs/modules/vsteam/index) for getting started.
 
-## Requirements
+### Module VSTeam Plus
+
+This module builds up on the VSTeam module and is a module of "super-luxury" functions. These can be more comfortable to make automation more simple and only cmdlets from VSTeam are used. This module is not accessing the API directly.
+
+Check [the repository](https://github.com/MethodsAndPractices/vsteam-plus) for the code and to contribute.
+
+
+### Quickstart Scripts
+
+This repository is a place with a collection of best practice scripts to get you started and the can map certain scenarios you might find useful. They use all modules and can include more complex scenarios and full automation samples. Some are to get you started and many that are supposed to have value in your daily work.
+
+Check [the repository](https://github.com/MethodsAndPractices/vsteam-quickstart-scripts) for the code and to contribute.
+
+## Minimal Requirements
 
 - Windows PowerShell 5.0 or newer.
-- PowerShell Core.
-
-## Installation
-
-Install this module from the [PowerShell Gallery](https://www.powershellgallery.com/packages/VSTeam)
-
-```powershell
-Install-Module -Name VSTeam -Scope CurrentUser
-```
-
-## Module Dependencies
-
-- [SHiPS module](https://www.powershellgallery.com/packages/SHiPS/)
-- [Trackyon.Utils module](https://www.powershellgallery.com/packages/Trackyon.Utils)
