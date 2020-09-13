@@ -72,3 +72,4 @@ stages:
                   GH_EMAIL: $(GH_EMAIL)
                   GH_TOKEN: $(GH_TOKEN)
                   GH_LOGIN: $(GH_LOGIN)
+                displayName: push to GitHub Pages
