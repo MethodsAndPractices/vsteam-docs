@@ -61,10 +61,22 @@ module.exports = {
           }, ],
         },
         {
-          title: 'More',
+          title: 'GitHub',
           items: [{
-            label: 'GitHub',
+            label: 'VSTeam Docs',
             href: 'https://github.com/MethodsAndPractices/vsteam-docs',
+          },
+          {
+            label: 'VSTeam Module',
+            href: 'https://github.com/MethodsAndPractices/vsteam',
+          },
+          {
+            label: 'VSTeam-Plus Module',
+            href: 'https://github.com/MethodsAndPractices/vsteam-plus',
+          },
+          {
+            label: 'VSTeam Quickstart Scripts',
+            href: 'https://github.com/MethodsAndPractices/vsteam-quickstart-scripts',
           }],
         },
       ],
@@ -86,8 +98,7 @@ module.exports = {
           editUrl: 'https://github.com/MethodsAndPractices/vsteam-docs/edit/master/website/blog/',
         },
         modules: {
-          showReadingTime: true,
-          editURl: 'https://github.com/MethodsAndPractices/vsteam-docs/edit/master/website/blog/'
+          showReadingTime: true
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
