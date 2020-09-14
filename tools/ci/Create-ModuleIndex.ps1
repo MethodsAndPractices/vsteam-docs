@@ -2,20 +2,15 @@
 param (
     [Parameter(Mandatory = $true)]
     [string]
-    $Module,
-    [Parameter(Mandatory = $false)]
-    [string]
-    $BasePath = './modules/'
+    $Path
 )
 
-$docsPath = ("$BasePath$Module").ToLower()
-
-Write-Output "Creating file index for module $Module"
+Write-Output "Creating file index for module in path $Path"
 
 # for the markdown index file
 $sbMarkdownIndex = New-Object System.Text.StringBuilder
 
-$files = Get-ChildItem -Path $docsPath  -Filter '*-*.md'
+$files = Get-ChildItem -Path $Path  -Filter '*-*.md'
 
 
 foreach ($file in $files) {
@@ -27,7 +22,7 @@ foreach ($file in $files) {
     #regex is search all text between the header '## SYNOPSIS' and '## SYNTAX' to get the cmdlet summary including new lines
     [regex] $regex = '(?s)(\#\# *SYNOPSIS)(.*?)(\#\# *SYNTAX)'
 
-    if($fileContent -match $regex){
+    if ($fileContent -match $regex) {
         $synopsis = $Matches[2].Trim("`r`n")
         $null = $sbMarkdownIndex.Append("$synopsis`r`n`r`n")
     }
@@ -36,7 +31,17 @@ foreach ($file in $files) {
 
 $indexFile = (Get-Content -Path "$BasePath/index-$($Module.ToLower()).md" -Encoding utf8 | Out-String)
 
-$sbMarkdownIndex.Insert(0,"$indexFile`r`n")
+$sbMarkdownIndex.Insert(0, "$indexFile`r`n")
 
 Write-Output 'Creating cmdlet index file'
-Set-Content -Path "$docsPath/index.md" -Value $sbMarkdownIndex.ToString()
+Set-Content -Path "$Path/index.md" -Value $sbMarkdownIndex.ToString()
+
+$indexFilePath = "$Path/../index.md"
+
+If (Test-Path $indexFilePath) {
+    Write-Output "Counting cmdlet commands and saving it into the introduction index file: $indexFilePath"
+    (Get-Content $indexFilePath -Encoding UTF8 | Out-String) -replace '#NumberOfCmdLets#',($files.Count) | Set-Content -Path $indexFilePath -Encoding UTF8
+}
+else {
+    Write-Error "could not find file in path $indexFilePath"
+}

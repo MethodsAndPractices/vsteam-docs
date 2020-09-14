@@ -52,3 +52,8 @@ Profiles allow you to store your account information for easy switching of accou
 The provider allows you to navigate your TFS or AzD as a file system.
 
 ## VSTeam Functions
+
+Currently we have 150 in VSTeam and it's growing.
+To see a full list of check the summary page.
+
+

@@ -10,9 +10,9 @@ This site is the central page for all repositories and modules that come with VS
 
 ### Module VSTeam
 
-This module is basically inly a wrapper for the API and tries to keep things simple. More complex functions with multiple steps are not allowed with this. 
+This module is basically inly a wrapper for the API and tries to keep things simple. More complex functions with multiple steps are not allowed with this.
 
-Check [the repository](https://github.com/MethodsAndPractices/vsteam) for the code (and contribute) or [the docs](https://methodsandpractices.github.io/vsteam-docs/modules/vsteam/index) for getting started.
+Check [the repository](https://github.com/MethodsAndPractices/vsteam) for the code (and contribute) or [the docs](../modules/vsteam/index) for getting started.
 
 ### Module VSTeam Plus
 
