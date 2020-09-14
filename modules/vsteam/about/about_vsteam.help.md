@@ -1,6 +1,14 @@
 ---
 title: About VSTeam
 sidebar_label: about_VSTeam
+description: Provides access to your Azure DevOps (AzD) and Team Foundation Server (TFS) from macOS, Linux and Windows.
+keywords:
+  - Team Services
+  - VSTS
+  - TFS
+  - VSO
+  - DevOps
+  - Azure DevOps
 ---
 
 ## TOPIC
@@ -78,7 +86,7 @@ Get-VSTeamProject | Remove-VSTeamProject -Force
 This will delete all the projects in your AzD for TFS. Use with caution.
 
 ## KEYWORDS
-Team Services, VSTS, TFS, VSO, TFS, DevOps
+Team Services, VSTS, TFS, VSO, TFS, DevOps, Azure DevOps
 
 ## SEE ALSO
 Set-VSTeamAccount
