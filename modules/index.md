@@ -1,6 +1,17 @@
-# VSTeam Help
+---
+title: Introduction
+sidebar_label: Introduction
+keywords:
+  - VSTeam
+  - Team Services
+  - VSTS
+  - TFS
+  - VSO
+  - DevOps
+  - Azure DevOps
+---
 
-This site is the central page for all repositories and modules that come with VSTeam. VSTeam is a bundle of PowerShell modules to access and get you started with
+# VSTeam Help
 
 VSTeam is a PowerShell module with commands for accessing your [Azure DevOps Server (previously named Visual Studio Team Foundation Server) 2017/2018](https://cda.ms/Bf) and [Azure DevOps (previously named Visual Studio Team Services)](https://cda.ms/Bf).
 
@@ -30,15 +41,15 @@ Install-Module -Name VSTeam -Scope CurrentUser
 
 ## About files
 
-[VSTeam](Module/../en-US/about_vsteam.help.txt)
+[VSTeam](about/about_vsteam.help.md)
 
 Learn about the goals of VSTeam.
 
-[Profiles](Module/../en-US/about_vsteam_profiles.help.txt)
+[Profiles](about/about_vsteam_profiles.help.md)
 
 Profiles allow you to store your account information for easy switching of accounts.
 
-[Provider](Module/../en-US/about_vsteam_provider.help.txt)
+[Provider](about/about_vsteam_provider.help.md)
 
 The provider allows you to navigate your TFS or AzD as a file system.
 
