@@ -15,20 +15,14 @@ keywords:
 VSTeam
 
 ## SHORT DESCRIPTION
-Provides access to your Azure DevOps (AzD) and Team 
-Foundation Server (TFS) from macOS, Linux and Windows.
+Provides access to your Azure DevOps (AzD) and Team Foundation Server (TFS) from macOS, Linux and Windows.
 
 ## LONG DESCRIPTION
-Add an account using Set-VSTeamAccount and then you can call the rest of the 
-functions.
+Add an account using Set-VSTeamAccount and then you can call the rest of the functions.
 
-Use `Set-VSTeamDefaultProject` so you do not have to provide the `-ProjectName` 
-parameter with the rest of the calls in the module. However, the 
-`-ProjectName` parameter is dynamic and you can use tab completion to cycle
-through all the projects.
+Use `Set-VSTeamDefaultProject` so you do not have to provide the `-ProjectName` parameter with the rest of the calls in the module. However, the `-ProjectName` parameter is dynamic and you can use tab completion to cycle through all the projects.
 
-All the calls have a default 60 second timeout. Use Set-VSTeamDefaultAPITimeout
-to adjust the timeout.
+All the calls have a default 60 second timeout. Use Set-VSTeamDefaultAPITimeout to adjust the timeout.
 
 Using the `Set-VSTeamAPIVersion` function you can control which version of the APIs are used.
 
