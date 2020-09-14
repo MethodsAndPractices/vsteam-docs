@@ -21,4 +21,4 @@ New-MarkdownHelp -Module $Module -OutputFolder $OutputFolder -Force
 
 . $PSScriptRoot\Create-DocusaurusMenuFile.ps1 -MarkdownPath $OutputFolder
 
-. $PSScriptRoot\Create-ModuleIndex.ps1 -Module $Module
+#. $PSScriptRoot\Create-ModuleIndex.ps1 -Module $Module
