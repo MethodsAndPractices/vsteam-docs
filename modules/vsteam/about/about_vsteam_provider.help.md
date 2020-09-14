@@ -1,8 +1,7 @@
 ---
 title: About VSTeam Provider
 sidebar_label: about_VSTeam_Provider
-description: The VSTeamAccount SHiPS provider allows you to navigate your TFS/AzD
-as a file system.
+description: The VSTeamAccount SHiPS provider allows you to navigate your TFS/AzD as a file system.
 keywords:
   - Team Services
   - VSTS
@@ -62,12 +61,9 @@ as a file system using the following tree:
 ## LONG DESCRIPTION
 You use the New-PSDrive cmdlet to mount a drive to your account.
 
-You can also use the -Drive parameter of Set-VSTeamAccount to have
-the required command written to the console so you can copy and
-paste the command.
+You can also use the `-Drive` parameter of `Set-VSTeamAccount` to have the required command written to the console so you can copy and paste the command.
 
-The provider caches the results. To force a round trip to skip the
-cache use -Force switch with Get-ChildItem
+The provider caches the results. To force a round trip to skip the cache use -Force switch with `Get-ChildItem`
 
 ## EXAMPLES
 ```powershell
@@ -80,7 +76,6 @@ Get-ChildItem
 ```powershell
 Set-VSTeamAccount -Profile '[profileName]' -Drive '[driveName]'
 ```
-
 
 To map a drive run the following command:
 ```powershell
