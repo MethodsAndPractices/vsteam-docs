@@ -1,6 +1,6 @@
 ---
 title: Introduction
-sidebar_label: Introduction
+hide_title: true
 keywords:
   - VSTeam
   - Team Services
