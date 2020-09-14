@@ -1,6 +1,6 @@
 ---
 title: Introduction
-hide_title: true
+hide_title: false
 keywords:
   - VSTeam
   - Team Services
@@ -53,7 +53,4 @@ The provider allows you to navigate your TFS or AzD as a file system.
 
 ## VSTeam Functions
 
-Currently we have 150 in VSTeam and it's growing.
-To see a full list of check the summary page.
-
-
+To see a full list of check the [summary page](commands/index.md).

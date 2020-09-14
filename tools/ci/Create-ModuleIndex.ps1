@@ -29,19 +29,27 @@ foreach ($file in $files) {
 
 }
 
-$indexFile = (Get-Content -Path "$BasePath/index-$($Module.ToLower()).md" -Encoding utf8 | Out-String)
+$indexFile = "---
+title: Command List
+hide_title: false
+keywords:
+  - VSTeam
+  - Team Services
+  - VSTS
+  - TFS
+  - VSO
+  - DevOps
+  - Azure DevOps
+  - Summary
+---
+
+
+:::note
+Currently there are $($files.Count) commandlets in the module.
+:::
+"
 
 $sbMarkdownIndex.Insert(0, "$indexFile`r`n")
 
 Write-Output 'Creating cmdlet index file'
 Set-Content -Path "$Path/index.md" -Value $sbMarkdownIndex.ToString()
-
-$indexFilePath = "$Path/../index.md"
-
-If (Test-Path $indexFilePath) {
-    Write-Output "Counting cmdlet commands and saving it into the introduction index file: $indexFilePath"
-    (Get-Content $indexFilePath -Encoding UTF8 | Out-String) -replace '#NumberOfCmdLets#',($files.Count) | Set-Content -Path $indexFilePath -Encoding UTF8
-}
-else {
-    Write-Error "could not find file in path $indexFilePath"
-}

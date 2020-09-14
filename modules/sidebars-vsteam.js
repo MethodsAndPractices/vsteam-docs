@@ -1,4 +1,6 @@
-let vsTeamModuleCommands = require("./vsteam/sidebars.js");
+let vsTeamModuleCommands = require("./vsteam/commands/sidebars.js");
+
+let cmdlets = [...['commands/index'], ...vsTeamModuleCommands]
 
 module.exports = {
     modules: {
@@ -10,6 +12,6 @@ module.exports = {
             'about/about_vsteam_profiles.help',
             'about/about_vsteam_provider.help'
         ],
-        "Commands": vsTeamModuleCommands
+        "Commands": cmdlets
     }
 };

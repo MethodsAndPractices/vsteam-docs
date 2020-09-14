@@ -21,4 +21,4 @@ yarn-error.log*
 
 modules/vsteam/**/*-*.md
 modules/vsteam/**/sidebars.js
-modules/**/index.md
+modules/**/commands/index.md
