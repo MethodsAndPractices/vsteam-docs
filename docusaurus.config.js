@@ -1,6 +1,6 @@
 module.exports = {
-  title: 'VSTeam',
-  tagline: 'A PowerShell Module to make it easier to automate Azure DevOps',
+  title: 'VSTeam Docs',
+  tagline: 'A collection of resources and modules to make it easier to automate Azure DevOps',
   url: 'https://methodsandpractices.github.io',
   baseUrl: '/vsteam-docs/',
   favicon: 'img/favicon.ico',
@@ -16,7 +16,7 @@ module.exports = {
       links: [{
           to: 'docs/',
           activeBasePath: 'docs',
-          label: 'Docs',
+          label: 'Overview',
           position: 'left',
         },
         /*

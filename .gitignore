@@ -22,3 +22,4 @@ yarn-error.log*
 modules/vsteam/**/*-*.md
 modules/vsteam/**/sidebars.js
 modules/**/commands/index.md
+static/img/~$*.pptx
