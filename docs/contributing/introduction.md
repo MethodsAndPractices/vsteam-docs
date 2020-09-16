@@ -1,43 +1,24 @@
 ---
 id: introduction
 title: Introduction
+hide_title: true
 ---
 
-# Contributing to VSTeam
+import ModuleOnly from './../common/only-modules.md'
+
+# Contributing to the VSTeam Projects
 
 We are truly grateful for all the support developing VSTeam. It means a lot that you spend your time to help improve this module. With more people wanting to help we need to agree in some standards so your pull requests can be processed faster with less frustration and waiting time.
 
-## Steps to contribute
-
-1. Visit [docs.microsoft.com](http://cda.ms/4j) and find [the API you want to wrap](explore-api).
-2. Explore the API and get familiar with it.
-3. Fork this repository and create a branch for your work.
-4. Install the `SHiPS` PowerShell module
-5. Install the `Trackyon.Utils` module
-6. Write help. **It is important that you do this before you start adding the function.**
-7. Write unit tests.
-8. Code the function.
-9. *If needed:* Add type file.
-10. *If needed:* Add format file.
-11. Update the CHANGELOG.md file.
-12. Goto 4 for next function.
-
-## Housekeeping
-
+:::caution Housekeeping
 This module runs on Mac, PC and Linux. Therefore, **casing is very important**.  When you update the psd1 file the casing of the files must match those on disk. If they do not there could be issue loading the module on Mac and Linux.
-
-## Running Integration tests
-
-- Install SonarQube extension
-- Set the following Environment variables.
-  - `$env:ACCT = VSTS` Account Name or full TFS URL including collection
-  - `$env:API_VERSION = TFS2017` or TFS2018 / AzD2019 for on-prem versions, or VSTS for the Service variant, depending on the value used for ACCT
-  - `$env:EMAIL` = Email of user to remove and re-add to account
-  - `$env:PAT` = Personal Access token of ACCT
+:::
 
 ## Get the code
 
-Now it is time to get your hands on VSTeam. Fork this repository, clone it to your development machine and create a branch for your work.
+Now it is time to get your hands on one of the repositories. Fork your repository, clone it to your development machine and create a branch for your work.
+
+Check [GitHub documentation](https://docs.github.com/en/github/getting-started-with-github/fork-a-repo) on how to do it.
 
 ## Write Help
 
@@ -55,26 +36,36 @@ At first it will feel odd to write the help and test first but the more you do i
 
 Because I will not be over your shoulder you could write the tests and even the help after. **Just know if your pull request does not have tests and help it will be rejected.**
 
-**Note**: The pipeline uses a static code analysis tool for scanning the code for credentials. Please read the page [about the credential scanner](../build/CredScanTask.md)
+:::note
+The pipeline uses a static code analysis tool for scanning the code for credentials. Please read the page [about the credential scanner](../build/CredScanTask.md)
+:::
 
-## Code the function
+## Code the function / script
 
-By now there should be a module that has already wrapped an API similar to the one you are wrapping now. Use that code as template for your module. Consistency is very important to me and will slow the pull request process if the changes are not consistent with those already in the module.
+When starting to code a new cmdlet for either of the existing modules, then take an existing cmdlet and take it as a blueprint. We want to keep the style similar so we are able to read the code faster.
+Even if your code seems much more shorter or technically more elegant it does not mean it is better for the project.
 
-If you feel the conventions should be changed please log and issue so we can discuss.
+But if you still think you have good ideas for coding style, then please come to us and we can discuss.
+
+We also run the standard rules for the PSScriptAnalyzer and we enforced that no warning should appear. This is as well a minimum we expect to have.
+The build will fail if there is any warning.
 
 ## Add a type file
 
+<ModuleOnly />
+
 Type files go in the types folder.
 
-See PowerShell documentation for more explanation: https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_types.ps1xml?view=powershell-6
+See [PowerShell documentation](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_types.ps1xml) for more explanation.
 
 ## Add a format file
 
+<ModuleOnly />
+
 Format files go in the formats folder.
 
-See PowerShell documentation for more explanation: https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_format.ps1xml?view=powershell-6
+See [PowerShell documentation](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_format.ps1xml) for more explanation.
 
 ## Update CHANGELOG.md
 
-Update the CHANGELOG.md file with your changes.
+Update the CHANGELOG.md file with your changes in the respective repository.

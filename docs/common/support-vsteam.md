@@ -1,3 +1,0 @@
-:::note Supported în
-**VSTeam**
-:::

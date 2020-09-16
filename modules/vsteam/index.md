@@ -17,7 +17,7 @@ The VSTeam module is also a provider allowing users to navigate their [Azure Dev
 
 To get started you can visit this blog [PowerShell I would like you to meet TFS and VSTS](http://www.donovanbrown.com/post/PowerShell-I-would-like-you-to-meet-TFS-and-VSTS)
 
-Documentation of the cmdlets can be found in the [docs README](https://github.com/DarqueWarrior/vsteam/blob/master/docs/readme.md) or using `Get-Help VSTeam` once the module is installed.
+Documentation of the cmdlets can be found in the [Commands Section](commands/index.md) or using `Get-Help VSTeam` once the module is installed.
 
 ## Requirements
 
@@ -50,7 +50,3 @@ Profiles allow you to store your account information for easy switching of accou
 [Provider](about/about_vsteam_provider.help.md)
 
 The provider allows you to navigate your TFS or AzD as a file system.
-
-## VSTeam Functions
-
-To see a full list of check the [summary page](commands/index.md).

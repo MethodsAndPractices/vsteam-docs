@@ -6,9 +6,7 @@ module.exports = {
     ],
     Contributing: [
       'contributing/introduction',
-      'contributing/explore-api',
-      'contributing/build-with-docker'
-
+      'contributing/explore-api'
     ]
   }
 };

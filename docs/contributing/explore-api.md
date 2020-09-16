@@ -30,3 +30,25 @@ Now you can press Send. Postman will issue the request and display the results a
 This confirms that we know how to build a complete request to the service. This is an opportunity to explore all the parameters of the API and make sure you know what to expect.
 
 ## Use Invoke-VSTeamRequest
+
+The most powerful function in VSTeam is [Invoke-VSTeamRequest](commands/Invoke-VSTeamRequest.md). If a commandlet does not exist (yet) you can use this command to test new implementations against the API.
+
+The function uses completer for the parameters `area` and `resource` queries the API to get all possible values. In that way you get easily test API endpoints directly with VSteam and either start scripting or go from there to start writing a new commandlet for VSTeam or VSTeam Plus.
+
+To use the completer functionality if the cmdlet you need to [login with a PAT](https://docs.microsoft.com/en-us/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate?view=azure-devops&tabs=preview-page) to an organization
+
+```powershell
+Set-VSTeamAccount -Account MyOrg -PAT MyPat
+```
+
+And then you can do the following
+
+![Animation showing Invoke-VSTeamRequest example](/docs/contributing/images/vsteam-request.example.gif)
+
+As you can see, the `-resource` parameter is contextual and shows only values that fit with the `-area` parameter. This might make it easier for you to test a not yet existing API implementation.
+
+A full call could look like this
+
+```powershell
+Invoke-VSTeamRequest -area 'wit' -resource 'queries' -version '6.0' -ProjectName 'MyProject'
+```

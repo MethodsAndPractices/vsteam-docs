@@ -5,7 +5,10 @@ let cmdlets = [...['commands/index'], ...vsTeamModuleCommands]
 module.exports = {
     modules: {
         "Getting Started": [
-            'index'
+            'index',
+            'contribute',
+            'integration-tests',
+            'build-with-docker'
         ],
         "About": [
             'about/about_vsteam.help',
