@@ -1,0 +1,90 @@
+---
+title: About VSTeam Provider
+sidebar_label: about_VSTeam_Provider
+description: The VSTeamAccount SHiPS provider allows you to navigate your TFS/AzD as a file system.
+keywords:
+  - Team Services
+  - VSTS
+  - TFS
+  - VSO
+  - DevOps
+  - Azure DevOps
+---
+
+## TOPIC
+VSTeam Provider
+
+## SHORT DESCRIPTION
+The VSTeamAccount SHiPS provider allows you to navigate your TFS/AzD
+as a file system using the following tree:
+
+```
+ Account
+ - Agent Pools
+   - Pool1
+     - Agent1
+       - JobRequest1
+       - JobRequest2
+ - Extensions
+   - Extension1
+   - Extension2
+ - Feeds
+   - Feed1
+   - Feed2
+ - Memberships
+   - Groups
+     - Group1
+   - Users
+     - User1
+ - Project1
+ - Project2
+ - Builds
+    - Build1
+    - Build2
+ - Releases
+    - Release1
+       - Environment 1
+       - Attempt 1
+          - Task1
+          - Task2
+          - Task3
+    - Release2
+ - Teams
+    - Team1
+    - Team2
+ - Repositories
+    - Repo1
+       - Ref1
+       - Ref2
+```
+
+## LONG DESCRIPTION
+You use the New-PSDrive cmdlet to mount a drive to your account.
+
+You can also use the `-Drive` parameter of `Set-VSTeamAccount` to have the required command written to the console so you can copy and paste the command.
+
+The provider caches the results. To force a round trip to skip the cache use -Force switch with `Get-ChildItem`
+
+## EXAMPLES
+```powershell
+Set-VSTeamAccount -Account '[accountname]' -PersonalAccessToken '[VSTS Tokenvalue]'
+New-PSDrive -Name VSTeamAccount -PSProvider SHiPS -Root 'VSTeam#VSTeamAccount'
+Set-Location VSTeamAccount:
+Get-ChildItem
+```
+
+```powershell
+Set-VSTeamAccount -Profile '[profileName]' -Drive '[driveName]'
+```
+
+To map a drive run the following command:
+```powershell
+New-PSDrive -Name driveName -PSProvider SHiPS -Root 'VSTeam#VSTeamAccount'
+```
+
+## KEYWORDS
+Team Services, VSTS, TFS, VSO, TFS, DevOps, Azure DevOps
+
+SEE ALSO
+Set-VSTeamAccount
+Set-VSTeamAPIVersion
