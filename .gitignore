@@ -20,7 +20,9 @@ yarn-debug.log*
 yarn-error.log*
 
 
-modules/vsteam/**/sidebars.js
-modules/**/commands/*-*.md
-modules/**/commands/index.md
-static/img/~$*.pptx
+docs/modules/**/sidebars.js
+docs/modules/**/commands/*-*.md
+docs/modules/**/commands/index.md
+
+# office exclude temp files
+~$*.pptx
