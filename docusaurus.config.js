@@ -1,6 +1,6 @@
 module.exports = {
-  title: 'VSTeam',
-  tagline: 'A PowerShell Module to make it easier to automate Azure DevOps',
+  title: 'VSTeam Docs',
+  tagline: 'A collection of resources and modules to make it easier to automate Azure DevOps',
   url: 'https://methodsandpractices.github.io',
   baseUrl: '/vsteam-docs/',
   favicon: 'img/favicon.ico',
@@ -14,9 +14,9 @@ module.exports = {
         src: 'img/logo.svg',
       },
       links: [{
-          to: 'docs/',
-          activeBasePath: 'docs',
-          label: 'Docs',
+          to: 'docs/overview/getting-started',
+          activeBasePath: 'docs/overview',
+          label: 'Overview',
           position: 'left',
         },
         /*
@@ -32,9 +32,21 @@ module.exports = {
           position: 'right',
         },
         {
-          to: 'modules/vsteam/index',
-          activeBasePath: 'modules/vsteam',
+          to: 'docs/modules/vsteam/index',
+          activeBasePath: 'docs/modules/vsteam',
           label: 'VSTeam Module',
+          position: 'left'
+        },
+        /*{
+          to: 'docs/modules/vsteam-plus/index',
+          activeBasePath: 'docs/modules/vsteam-plus',
+          label: 'VSTeam Plus Module',
+          position: 'left'
+        },*/
+        {
+          to: 'docs/quickstart-scripts/index',
+          activeBasePath: 'docs/quickstart-scripts',
+          label: 'Quickstart Scripts',
           position: 'left'
         }
       ]
@@ -97,9 +109,6 @@ module.exports = {
           showReadingTime: true,
           editUrl: 'https://github.com/MethodsAndPractices/vsteam-docs/edit/master/website/blog/',
         },
-        modules: {
-          showReadingTime: true
-        },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
         },
@@ -109,18 +118,6 @@ module.exports = {
   plugins: [
     require.resolve('docusaurus-lunr-search'), {
       languages: ['en']
-    },
-    [
-      '@docusaurus/plugin-content-docs',
-      {
-        id: 'vsteam-module',
-        path: 'modules/vsteam',
-        editUrl: 'https://github.com/MethodsAndPractices/vsteam/.docs',
-        routeBasePath: 'modules/vsteam',
-        sidebarPath: require.resolve('./modules/sidebars-vsteam.js'),
-        showLastUpdateAuthor: true,
-        showLastUpdateTime: true,
-      }
-    ],
+    }
   ]
 };

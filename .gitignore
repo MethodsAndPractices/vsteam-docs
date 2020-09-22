@@ -19,6 +19,10 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-modules/vsteam/**/*-*.md
-modules/vsteam/**/sidebars.js
-modules/**/index.md
+
+docs/modules/**/sidebars.js
+docs/modules/**/commands/*-*.md
+docs/modules/**/commands/index.md
+
+# office exclude temp files
+~$*.pptx
