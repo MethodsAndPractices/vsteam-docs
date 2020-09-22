@@ -33,7 +33,7 @@ Also be aware that we cannot know all prerequisites as there often many differen
 ## How to Run
 
 1. Install Docker: [https://docs.docker.com/engine/install](https://docs.docker.com/engine/install)
-2. Run [Run-ContainerTests.ps1](Run-ContainerTests.ps1) located under ./tools/docker
+2. Run [https://github.com/MethodsAndPractices/vsteam/blob/master/tools/docker/Run-ContainerTests.ps1](Run-ContainerTests.ps1) located under ./tools/docker
 
 ```powershell
 #Example
@@ -42,6 +42,6 @@ Run-ContainerTests.ps1
 
 ## Limitations
 
-* Windows container only work with windows based systems.
+* Windows containers only work with windows based systems.
 * If you want to use the container to develop with [Visual Studio Code](https://code.visualstudio.com/?wt.mc_id=DX_841432&WT.mc_id=github-github-dbrown) [remote development](https://code.visualstudio.com/docs/remote/remote-overview?WT.mc_id=github-github-dbrown), then it currently only works with linux systems.
 * The log in PowerShell 5 window is scrambled, only the Pester results at the end can be properly observed.
