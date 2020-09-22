@@ -37,12 +37,12 @@ module.exports = {
           label: 'VSTeam Module',
           position: 'left'
         },
-        {
+        /*{
           to: 'docs/modules/vsteam-plus/index',
           activeBasePath: 'docs/modules/vsteam-plus',
           label: 'VSTeam Plus Module',
           position: 'left'
-        },
+        },*/
         {
           to: 'docs/quickstart-scripts/index',
           activeBasePath: 'docs/quickstart-scripts',
