@@ -26,7 +26,7 @@ const features = [
     ),
   },
   {
-    title: <>Kickstarter Samples</>,
+    title: <>Quickstart Scripts</>,
     imageUrl: 'img/startpage_kickstarter_samples.svg',
     description: (
       <>
