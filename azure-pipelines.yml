@@ -9,16 +9,16 @@ parameters:
 
 variables:
   - name: defaultName
-    value: 'master'
+    value: 'trunk'
 
 trigger:
-  - master
+  - trunk
 
 pr:
   autoCancel: true
   branches:
     include:
-      - master
+      - trunk
 
 #update documentation from powershell modules
 schedules:
@@ -26,7 +26,7 @@ schedules:
   displayName: Daily midnight build
   branches:
     include:
-    - master
+    - trunk
 
 stages:
   - ${{ if ne(variables['Build.SourceBranchName'], variables.defaultName) }}:
@@ -41,7 +41,7 @@ stages:
           - template: ./tools/ci/azurepipelines/buildDocs.yml
             parameters:
               docusaurusBuild: true
-  - ${{ if eq(variables['Build.SourceBranchName'], 'master') }}:
+  - ${{ if eq(variables['Build.SourceBranchName'], 'trunk') }}:
     - stage: buildAndDeployment
       displayName: Build and Deploy
       pool:
@@ -64,7 +64,7 @@ stages:
               - script: |
                   git config --global user.name "${GH_NAME}"
                   git config --global user.email "${GH_EMAIL}"
-                  git checkout -b master
+                  git checkout -b trunk
                   echo "machine github.com login ${GH_LOGIN} password ${GH_TOKEN}" > ~/.netrc
                   GIT_USER="${GH_LOGIN}" yarn deploy
                 env:

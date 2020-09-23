@@ -103,11 +103,11 @@ module.exports = {
           showReadingTime: true,
           homePageId: 'getting-started',
           sidebarPath: require.resolve('./sidebars.js'),
-          editUrl: 'https://github.com/MethodsAndPractices/vsteam-docs/edit/master/',
+          editUrl: 'https://github.com/MethodsAndPractices/vsteam-docs/edit/trunk/',
         },
         blog: {
           showReadingTime: true,
-          editUrl: 'https://github.com/MethodsAndPractices/vsteam-docs/edit/master/website/blog/',
+          editUrl: 'https://github.com/MethodsAndPractices/vsteam-docs/edit/trunk/website/blog/',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
