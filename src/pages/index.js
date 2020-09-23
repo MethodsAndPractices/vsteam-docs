@@ -30,7 +30,7 @@ const features = [
     imageUrl: 'img/startpage_kickstarter_samples.svg',
     description: (
       <>
-        Use our quickstart scripts to get you easily started or contribute your own from your projects.
+        Use our <a href="https://github.com/MethodsAndPractices/vsteam-quickstart-scripts">quickstart scripts</a> to get you <a href="docs/quickstart-scripts/index">easily started</a> or contribute your own from your projects.
       </>
     ),
   },
