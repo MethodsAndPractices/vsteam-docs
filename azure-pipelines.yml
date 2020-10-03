@@ -1,3 +1,8 @@
+name: $(Build.BuildID)
+
+trigger:
+  - trunk
+
 parameters:
   - name: agent
     type: string
@@ -8,68 +13,24 @@ parameters:
       - windows-latest
 
 variables:
-  - name: defaultName
-    value: 'trunk'
-
-trigger:
-  - trunk
-
-pr:
-  autoCancel: true
-  branches:
-    include:
-      - trunk
-
-#update documentation from powershell modules
-schedules:
-- cron: "0 0 * * *"
-  displayName: Daily midnight build
-  branches:
-    include:
-    - trunk
+  defaultName: "trunk"
+  system.debug: true
 
 stages:
-  - ${{ if ne(variables['Build.SourceBranchName'], variables.defaultName) }}:
-    - stage: build
-      displayName: Build
-      pool:
-        vmImage: ${{parameters.agent}}
-      jobs:
-      - job: test_build
-        displayName: Check Build
+  - stage: Build
+    displayName: Build Stage
+    pool:
+      vmImage: ${{parameters.agent}}
+    jobs:
+      - job: Build_Docs
+        displayName: Build Docs
         steps:
-          - template: ./tools/ci/azurepipelines/buildDocs.yml
-            parameters:
-              docusaurusBuild: true
-  - ${{ if eq(variables['Build.SourceBranchName'], 'trunk') }}:
-    - stage: buildAndDeployment
-      displayName: Build and Deploy
-      pool:
-        vmImage: ${{parameters.agent}}
-      jobs:
-      - deployment: buildAndDeployment
-        displayName: Build and Deploy to GitHub Pages
-        environment: GitHub Pages VSTeam Docs
-        strategy:
-          runOnce:
-            deploy:
-              steps:
-              - checkout: self
-                persistCredentials: true
-
-              - template: ./tools/ci/azurepipelines/buildDocs.yml
-                parameters:
-                  docusaurusBuild: false
-
-              - script: |
-                  git config --global user.name "${GH_NAME}"
-                  git config --global user.email "${GH_EMAIL}"
-                  git checkout -b trunk
-                  echo "machine github.com login ${GH_LOGIN} password ${GH_TOKEN}" > ~/.netrc
-                  GIT_USER="${GH_LOGIN}" yarn deploy
-                env:
-                  GH_NAME: $(GH_NAME)
-                  GH_EMAIL: $(GH_EMAIL)
-                  GH_TOKEN: $(GH_TOKEN)
-                  GH_LOGIN: $(GH_LOGIN)
-                displayName: push to GitHub Pages
+          - task: DownloadPipelineArtifact@2
+            inputs:
+              buildType: "specific"
+              project: "3e857acd-880f-4056-a46b-1de672ca55cc"
+              definition: "62"
+              buildVersionToDownload: "latestFromBranch"
+              branchName: "refs/heads/trunk"
+              artifactName: "Package"
+              targetPath: "$(Pipeline.Workspace)"
