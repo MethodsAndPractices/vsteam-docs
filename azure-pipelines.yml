@@ -34,3 +34,13 @@ stages:
               branchName: "refs/heads/trunk"
               artifactName: "Package"
               targetPath: "$(Pipeline.Workspace)"
+          - task: NodeTool@0
+            inputs:
+              versionSpec: ${{parameters.nodeVersion}}
+            displayName: "Install Node.js Version ${{parameters.nodeVersion}}"
+
+          - script: yarn install
+            displayName: yarn install
+
+          - script: yarn build:VSTeamHelp
+            displayName: generate VSTeam module docs
