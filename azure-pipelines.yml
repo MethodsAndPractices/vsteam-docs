@@ -27,7 +27,21 @@ stages:
       - job: Build_Docs
         displayName: Build Docs
         steps:
+          - task: NodeTool@0
+            displayName: "install Node.js Version ${{parameters.nodeVersion}} on agent"
+            inputs:
+              versionSpec: ${{parameters.nodeVersion}}
+
+          - task: YarnInstaller@3
+            displayName: install yarn  Version 1.x on agent
+            inputs:
+              versionSpec: "1.x"
+
+          - script: yarn install
+            displayName: yarn install
+
           - task: DownloadPipelineArtifact@2
+            displayName: download artifact from VSTeam
             inputs:
               buildType: "specific"
               project: "3e857acd-880f-4056-a46b-1de672ca55cc"
@@ -37,52 +51,58 @@ stages:
               artifactName: "Package"
               targetPath: "$(Pipeline.Workspace)/Package"
 
-          - task: NodeTool@0
-            displayName: "Install Node.js Version ${{parameters.nodeVersion}}"
-            inputs:
-              versionSpec: ${{parameters.nodeVersion}}
-
-          - task: YarnInstaller@3
-            inputs:
-              versionSpec: "1.x"
-
-          - script: yarn install
-            displayName: yarn install
-
           - script: yarn build:VSTeamHelp
             displayName: generate VSTeam module docs
 
           - task: PublishPipelineArtifact@1
+            displayName: publish markdown files
             inputs:
-              targetPath: '$(Build.SourcesDirectory)/docs/modules/vsteam/commands'
-              artifact: 'docs'
-              publishLocation: 'pipeline'
+              targetPath: "$(Build.SourcesDirectory)/docs/modules/vsteam/commands"
+              artifact: "docs"
+              publishLocation: "pipeline"
 
   - stage: Deploy
     displayName: GitHub Pages
     dependsOn: Build
+    # pool:
+    #   vmImage: ${{parameters.agent}}
     jobs:
-    - deployment: Deploy
-      displayName: GitHub Pages
-      environment: 'GitHub Pages'
-      strategy:
-        runOnce:
-          deploy:
-            steps:
-            - checkout: self
-              persistCredentials: true
+      - deployment: Deploy
+        displayName: GitHub Pages
+        environment: "GitHub Pages"
+        strategy:
+          runOnce:
+            deploy:
+              steps:
+                - task: NodeTool@0
+                  displayName: "install Node.js Version ${{parameters.nodeVersion}} on agent"
+                  inputs:
+                    versionSpec: ${{parameters.nodeVersion}}
 
-            - task: DownloadPipelineArtifact@2
-              inputs:
-                buildType: 'current'
-                artifactName: 'docs'
-                targetPath: '$(Build.SourcesDirectory)/docs/modules/vsteam/commands'
-            
-            - task: NodeTool@0
-              displayName: "Install Node.js Version ${{parameters.nodeVersion}}"
-              inputs:
-                versionSpec: ${{parameters.nodeVersion}}
+                - task: YarnInstaller@3
+                  displayName: install yarn  Version 1.x on agent
+                  inputs:
+                    versionSpec: "1.x"
 
-            - task: YarnInstaller@3
-              inputs:
-                versionSpec: "1.x"
+                - checkout: self
+                  persistCredentials: true
+
+                - task: DownloadPipelineArtifact@2
+                  displayName: download artifact from build stage
+                  inputs:
+                    buildType: "current"
+                    artifactName: "docs"
+                    targetPath: "$(Build.SourcesDirectory)/docs/modules/vsteam/commands"
+
+                - script: |
+                    git config --global user.name "${GH_NAME}"
+                    git config --global user.email "${GH_EMAIL}"
+                    git checkout -b trunk
+                    echo "machine github.com login ${GH_LOGIN} password ${GH_TOKEN}" > ~/.netrc
+                    GIT_USER="${GH_LOGIN}" yarn deploy
+                  env:
+                    GH_NAME: $(GH_NAME)
+                    GH_EMAIL: $(GH_EMAIL)
+                    GH_TOKEN: $(GH_TOKEN)
+                    GH_LOGIN: $(GH_LOGIN)
+                  displayName: push to GitHub Pages
