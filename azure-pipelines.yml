@@ -61,7 +61,6 @@ stages:
   - stage: Deploy
     displayName: GitHub Pages
     dependsOn: Build
-    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/trunk'))
     jobs:
     - deployment: Deploy
       displayName: GitHub Pages
