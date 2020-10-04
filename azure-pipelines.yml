@@ -41,6 +41,10 @@ stages:
             inputs:
               versionSpec: ${{parameters.nodeVersion}}
 
+          - task: YarnInstaller@3
+            inputs:
+              versionSpec: "1.x"
+
           - script: yarn install
             displayName: yarn install
 
