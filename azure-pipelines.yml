@@ -50,3 +50,8 @@ stages:
 
           - script: yarn build:VSTeamHelp
             displayName: generate VSTeam module docs
+          - task: PublishPipelineArtifact@1
+            inputs:
+              targetPath: '$(Build.SourcesDirectory)/docs/modules/vsteam/commands'
+              artifact: 'docs'
+              publishLocation: 'pipeline'
