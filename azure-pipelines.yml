@@ -21,8 +21,8 @@ variables:
 stages:
   - stage: Build
     displayName: Build Stage
-    pool:
-      vmImage: ${{parameters.agent}}
+    # pool:
+    #   vmImage: ${{parameters.agent}}
     jobs:
       - job: Build_Docs
         displayName: Build Docs
