@@ -37,9 +37,9 @@ stages:
               artifactName: "Package"
               targetPath: "$(Pipeline.Workspace)"
           - task: NodeTool@0
+            displayName: "Install Node.js Version ${{parameters.nodeVersion}}"
             inputs:
               versionSpec: ${{parameters.nodeVersion}}
-            displayName: "Install Node.js Version ${{parameters.nodeVersion}}"
 
           - script: yarn install
             displayName: yarn install
