@@ -72,9 +72,12 @@ stages:
             - checkout: self
               persistCredentials: true
 
-            - download: current
-              artifact: docs
-
+            - task: DownloadPipelineArtifact@2
+              inputs:
+                buildType: 'current'
+                artifactName: 'docs'
+                targetPath: '$(Build.SourcesDirectory)/docs/modules/vsteam/commands'
+            
             - task: NodeTool@0
               displayName: "Install Node.js Version ${{parameters.nodeVersion}}"
               inputs:
