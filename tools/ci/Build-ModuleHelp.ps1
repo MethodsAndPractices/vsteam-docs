@@ -11,7 +11,7 @@ if (-not (Get-Module platyPS -ListAvailable)) {
 
 $OutputFolder = "./docs/modules/$($Module.ToLower())/commands"
 
-New-MarkdownHelp -MamlFile "$(Pipeline.Workspace)/Package/en-US/$($Module)-Help.xml" `
+New-MarkdownHelp -MamlFile "./Package/en-US/$($Module)-Help.xml" `
    -OutputFolder $OutputFolder `
    -AlphabeticParamsOrder -Force
 
