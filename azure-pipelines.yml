@@ -36,6 +36,7 @@ stages:
               branchName: "refs/heads/trunk"
               artifactName: "Package"
               targetPath: "$(Pipeline.Workspace)/Package"
+
           - task: NodeTool@0
             displayName: "Install Node.js Version ${{parameters.nodeVersion}}"
             inputs:
@@ -50,8 +51,36 @@ stages:
 
           - script: yarn build:VSTeamHelp
             displayName: generate VSTeam module docs
+
           - task: PublishPipelineArtifact@1
             inputs:
               targetPath: '$(Build.SourcesDirectory)/docs/modules/vsteam/commands'
               artifact: 'docs'
               publishLocation: 'pipeline'
+
+  - stage: Deploy
+    displayName: GitHub Pages
+    dependsOn: Build
+    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/trunk'))
+    jobs:
+    - deployment: Deploy
+      displayName: GitHub Pages
+      environment: 'GitHub Pages'
+      strategy:
+        runOnce:
+          deploy:
+            steps:
+            - checkout: self
+              persistCredentials: true
+
+            - download: current
+              artifact: docs
+
+            - task: NodeTool@0
+              displayName: "Install Node.js Version ${{parameters.nodeVersion}}"
+              inputs:
+                versionSpec: ${{parameters.nodeVersion}}
+
+            - task: YarnInstaller@3
+              inputs:
+                versionSpec: "1.x"
