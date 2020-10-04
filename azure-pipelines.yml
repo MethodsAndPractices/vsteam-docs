@@ -35,7 +35,7 @@ stages:
               buildVersionToDownload: "latestFromBranch"
               branchName: "refs/heads/trunk"
               artifactName: "Package"
-              targetPath: "$(Pipeline.Workspace)"
+              targetPath: "$(Pipeline.Workspace)/Package"
           - task: NodeTool@0
             displayName: "Install Node.js Version ${{parameters.nodeVersion}}"
             inputs:
