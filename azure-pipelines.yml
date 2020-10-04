@@ -87,6 +87,9 @@ stages:
                 - checkout: self
                   persistCredentials: true
 
+                - script: yarn install
+                  displayName: yarn install
+
                 - task: DownloadPipelineArtifact@2
                   displayName: download artifact from build stage
                   inputs:
