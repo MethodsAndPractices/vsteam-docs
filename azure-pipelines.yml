@@ -11,7 +11,9 @@ parameters:
       - macOS-latest
       - ubuntu-lastest
       - windows-latest
-
+  - name: nodeVersion
+    type: string
+    default: "12.x"
 variables:
   defaultName: "trunk"
   system.debug: true
