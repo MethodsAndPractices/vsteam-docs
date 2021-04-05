@@ -51,7 +51,7 @@ stages:
               artifactName: "Package"
               targetPath: "$(Pipeline.Workspace)/Package"
 
-          - script: yarn build:VSTeamHelp
+          - script: yarn build:VSTeamHelp -- XmlPath '$($Pipeline.Workspace)/Package/en-US/'
             displayName: generate VSTeam module docs
 
           - task: PublishPipelineArtifact@1
