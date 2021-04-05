@@ -2,7 +2,10 @@
 param (
    [Parameter(Mandatory = $false)]
    [string]
-   $Module
+   $Module,
+   [Parameter(Mandatory = $true)]
+   [string]
+   $XmlPath
 )
 
 if (-not (Get-Module platyPS -ListAvailable)) {
