@@ -2,12 +2,11 @@
 param (
    [Parameter(Mandatory = $false)]
    [string]
-   $Module
+   $Module,
+   [Parameter(Mandatory = $true)]
+   [string]
+   $XmlPath
 )
-
-if (-not (Get-Module $Module -ListAvailable)) {
-   Install-Module $Module -Scope CurrentUser -Force
-}
 
 if (-not (Get-Module platyPS -ListAvailable)) {
    Install-Module platyPS -Scope CurrentUser -Force
@@ -15,7 +14,9 @@ if (-not (Get-Module platyPS -ListAvailable)) {
 
 $OutputFolder = "./docs/modules/$($Module.ToLower())/commands"
 
-New-MarkdownHelp -Module $Module -OutputFolder $OutputFolder -Force
+New-MarkdownHelp -MamlFile "$($XmlPath)/Package/en-US/$($Module)-Help.xml" `
+   -OutputFolder $OutputFolder `
+   -AlphabeticParamsOrder -Force
 
 . $PSScriptRoot\Add-CustomYamMeta.ps1 -Path $OutputFolder `
    -BaseEditUrlPath "https://github.com/MethodsAndPractices/$($Module.ToLower())/edit/trunk/.docs"
