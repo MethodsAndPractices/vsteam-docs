@@ -28,11 +28,6 @@ module.exports = {
     ],
     "Commands": cmdlets
   },
-  vsteam_plus: {
-    "Getting-Started": [
-      'modules/vsteam-plus/index'
-    ]
-  },
   vsteam_quickstart: {
     "Getting-Started": [
       'quickstart-scripts/index'
