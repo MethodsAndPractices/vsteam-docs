@@ -14,29 +14,30 @@ module.exports = {
         alt: 'VSTeam Site Logo',
         src: 'img/logo.svg',
       },
-      items: [{
-        to: 'docs/overview/getting-started',
-        activeBasePath: 'docs/overview',
-        label: 'Overview',
-        position: 'left',
-      },
-      {
-        href: 'https://github.com/MethodsAndPractices/vsteam-docs',
-        label: 'GitHub',
-        position: 'right',
-      },
-      {
-        to: 'docs/modules/vsteam/index',
-        activeBasePath: 'docs/modules/vsteam',
-        label: 'VSTeam Module',
-        position: 'left'
-      },
-      {
-        to: 'docs/quickstart-scripts/index',
-        activeBasePath: 'docs/quickstart-scripts',
-        label: 'Quickstart Scripts',
-        position: 'left'
-      }
+      items: [
+        {
+          to: 'docs/overview/getting-started',
+          activeBasePath: 'docs/overview',
+          label: 'Overview',
+          position: 'left',
+        },
+        {
+          href: 'https://github.com/MethodsAndPractices/vsteam-docs',
+          label: 'GitHub',
+          position: 'right',
+        },
+        {
+          to: 'docs/modules/vsteam',
+          activeBasePath: 'docs/modules/vsteam',
+          label: 'VSTeam Module',
+          position: 'left'
+        },
+        {
+          to: 'docs/quickstart-scripts',
+          activeBasePath: 'docs/quickstart-scripts',
+          label: 'Quickstart Scripts',
+          position: 'left'
+        }
       ]
     },
     prism: {
@@ -81,8 +82,8 @@ module.exports = {
   },
   presets: [
     [
-      '@docusaurus/preset-classic',
-      {
+      'classic',
+      ({
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
           editUrl: 'https://github.com/MethodsAndPractices/vsteam-docs/edit/trunk/',
@@ -90,7 +91,7 @@ module.exports = {
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
         },
-      },
+      }),
     ],
   ],
   plugins: [

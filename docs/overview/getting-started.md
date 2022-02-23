@@ -1,6 +1,5 @@
 ---
 id: getting-started
-slug: /
 title: Getting Started
 sidebar_label: Getting Started
 ---
