@@ -5,8 +5,17 @@ param (
    $Module
 )
 
-if (-not (Get-Module $Module -ListAvailable)) {
-   Install-Module $Module -Scope CurrentUser -Force
+$tmpModuleFolder = "./tmp"
+$moduleVersion = (Find-Module -Name $Module).Version
+$modulePath = "$tmpModuleFolder/$Module/$moduleVersion"
+$xmlMamlHelpFile = "$modulePath/en-US/$Module-Help.xml"
+
+if (-not (Test-Path $tmpModuleFolder)) {
+   $null = New-Item -ItemType Directory -Force -Path $tmpModuleFolder
+}
+
+if (-not (Test-Path $modulePath)) {
+   Save-Module $Module -Path $tmpModuleFolder
 }
 
 if (-not (Get-Module platyPS -ListAvailable)) {
@@ -15,7 +24,9 @@ if (-not (Get-Module platyPS -ListAvailable)) {
 
 $OutputFolder = "./docs/modules/$($Module.ToLower())/commands"
 
-New-MarkdownHelp -Module $Module -OutputFolder $OutputFolder -Force
+$xmlMamlHelpFile = "$tmpModuleFolder/$Module/$moduleVersion/en-US/$Module-Help.xml"
+
+New-MarkdownHelp -OutputFolder $OutputFolder -MamlFile $xmlMamlHelpFile -Force
 
 . $PSScriptRoot\Add-CustomYamMeta.ps1 -Path $OutputFolder `
    -BaseEditUrlPath "https://github.com/MethodsAndPractices/$($Module.ToLower())/edit/trunk/.docs"
