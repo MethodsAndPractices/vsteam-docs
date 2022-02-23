@@ -20,5 +20,5 @@ steps:
 
   - ${{ if eq(parameters.docusaurusBuild, true) }}:
       - script: |
-          yarn run build:docusauraus
+          yarn run build:docusaurus
         displayName: "build website"
