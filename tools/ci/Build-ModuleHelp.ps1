@@ -15,7 +15,7 @@ if (-not (Test-Path $tmpModuleFolder)) {
 }
 
 if (-not (Test-Path $modulePath)) {
-   Save-Module $Module -Path $tmpModuleFolder
+   Save-Module $Module -Path $tmpModuleFolder -Repository PSGallery
 }
 
 if (-not (Get-Module platyPS -ListAvailable)) {
@@ -24,9 +24,8 @@ if (-not (Get-Module platyPS -ListAvailable)) {
 
 $OutputFolder = "./docs/modules/$($Module.ToLower())/commands"
 
-$xmlMamlHelpFile = "$tmpModuleFolder/$Module/$moduleVersion/en-US/$Module-Help.xml"
-
-New-MarkdownHelp -OutputFolder $OutputFolder -MamlFile $xmlMamlHelpFile -Force
+Import-Module "$tmpModuleFolder/$Module"
+New-MarkdownHelp -OutputFolder $OutputFolder -Module $Module -Force
 
 . $PSScriptRoot\Add-CustomYamMeta.ps1 -Path $OutputFolder `
    -BaseEditUrlPath "https://github.com/MethodsAndPractices/$($Module.ToLower())/edit/trunk/.docs"
