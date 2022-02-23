@@ -22,6 +22,10 @@ if (-not (Get-Module platyPS -ListAvailable)) {
    Install-Module platyPS -Scope CurrentUser -Force
 }
 
+if (-not (Get-Module $Module -ListAvailable)) {
+   Install-Module $Module -Scope CurrentUser -Force -Repository PSGallery
+}
+
 $OutputFolder = "./docs/modules/$($Module.ToLower())/commands"
 
 Import-Module "$tmpModuleFolder/$Module"
