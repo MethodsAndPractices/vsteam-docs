@@ -14,13 +14,6 @@ This module is basically inly a wrapper for the API and tries to keep things sim
 
 Check [the repository](https://github.com/MethodsAndPractices/vsteam) for the code (and contribute) or [the docs](modules/vsteam/index.md) for getting started.
 
-<!--
-### Module VSTeam Plus
-
-This module builds up on the VSTeam module and is a module of "super-luxury" functions. These can be more comfortable to make automation more simple and only cmdlets from VSTeam are used. This module is not accessing the API directly.
-
-Check [the repository](https://github.com/MethodsAndPractices/vsteam-plus) for the code and to contribute or [the docs](modules/vsteam-plus/index.md) for getting started.
--->
 
 ### Quickstart Scripts
 

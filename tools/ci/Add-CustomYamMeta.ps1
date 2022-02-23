@@ -20,7 +20,7 @@ foreach ($file in $files) {
     [regex] $regex = '(?s)(\#\# *SYNOPSIS)(.*?)(\#\# *SYNTAX)'
 
     $synopsis = $null
-    if($fileContent -match $regex){
+    if ($fileContent -match $regex) {
         $synopsis = $Matches[2].Trim("`r`n")
     }
 
@@ -34,7 +34,7 @@ title: $($file.BaseName)
 hide_title: true
 hide_table_of_contents: false
 custom_edit_url: $BaseEditUrlPath/$($file.Name)
-description: $synopsis
+description: '$synopsis'
 keywords:
   - vsteam
   - cmdlet

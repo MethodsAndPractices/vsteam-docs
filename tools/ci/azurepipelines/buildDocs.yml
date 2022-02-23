@@ -1,24 +1,24 @@
 parameters:
   - name: nodeVersion
     type: string
-    default: '12.x'
+    default: "14.x"
   - name: docusaurusBuild
     type: boolean
     default: true
 
 steps:
-- task: NodeTool@0
-  inputs:
-    versionSpec: ${{parameters.nodeVersion}}
-  displayName: 'Install Node.js Version 12.X'
+  - task: NodeTool@0
+    inputs:
+      versionSpec: ${{parameters.nodeVersion}}
+    displayName: "Install Node.js Version 14.X"
 
-- script: yarn install
-  displayName: yarn install
+  - script: yarn install
+    displayName: yarn install
 
-- script: yarn build:VSTeamHelp
-  displayName: generate VSTeam module docs
+  - script: yarn build:VSTeamHelp
+    displayName: generate VSTeam module docs
 
-- ${{ if eq(parameters.docusaurusBuild, true) }}:
-  - script: |
-      yarn run build:docusauraus
-    displayName: 'build website'
+  - ${{ if eq(parameters.docusaurusBuild, true) }}:
+      - script: |
+          yarn run build:docusaurus
+        displayName: "build website"
