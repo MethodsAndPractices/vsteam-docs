@@ -91,13 +91,26 @@ module.exports = {
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
         },
+      },
+      {
+        sitemap: {
+          changefreq: 'weekly',
+          priority: 0.5,
+        },
       }),
     ],
   ],
-  plugins: [
+  themes: [
     [
-      require.resolve('docusaurus-lunr-search'),
-      { languages: ['en'] }
+      require.resolve("@easyops-cn/docusaurus-search-local"),
+      {
+        hashed: true,
+        language: ["en"],
+        indexBlog: false,
+        indexDocs: true,
+        indexPages: false,
+        highlightSearchTermsOnTargetPage: true
+      }
     ]
   ]
 };
