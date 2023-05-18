@@ -51,7 +51,7 @@ module.exports = {
         title: 'Docs',
         items: [{
           label: 'VSTeam Module',
-          to: 'modules/vsteam/index',
+          to: 'docs/modules/vsteam/index',
         }],
       },
       {
