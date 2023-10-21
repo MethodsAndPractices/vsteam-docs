@@ -3,10 +3,10 @@ name: Docusaurus CI/CD Workflow
 on:
   push:
     branches:
-      - main
+      - trunk
   pull_request:
     branches:
-      - main
+      - trunk
   workflow_dispatch:
 
 jobs:
@@ -34,7 +34,7 @@ jobs:
     name: Deploy to GitHub Pages
     runs-on: ubuntu-latest
     needs: test-deploy
-    if: github.ref == 'refs/heads/main' # Ensures the deploy job only runs on main branch
+    if: github.ref == 'refs/heads/trunk'
 
     steps:
       - name: Checkout code
